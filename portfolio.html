@@ -52,17 +52,18 @@
 </head>
 <body class="antialiased">
 
+    <!-- HEADER -->
     <header class="w-full sticky top-0 z-20 backdrop-blur-md bg-white/80 border-b border-slate-200">
         <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <div class="w-9 h-9 rounded-2xl flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-900 shadow-lg group-hover:scale-105 transition-transform">
-                    <span class="font-bold text-xs text-white">OU</span>
-                </div>
+            
+            <!-- LOGO (Links back to Home) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="newlogo.png" alt="OptifyUp Logo" class="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform">
                 <div class="leading-tight hidden sm:block">
-                    <p class="text-xs uppercase tracking-[0.22em] text-orange-500 font-bold">OptifyUp</p>
-                    <p class="text-[11px] text-gray-600">Back to Home</p>
+                    <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wide">Back to Home</p>
                 </div>
             </a>
+
             <nav class="hidden md:flex items-center gap-6 text-xs text-gray-700 font-medium">
                 <a href="#section-laxdrip" class="hover:text-blue-900 transition-colors">Laxdrip</a>
                 <a href="#section-rating" class="hover:text-blue-900 transition-colors">RatingKitchen</a>
@@ -74,6 +75,7 @@
 
     <main class="max-w-6xl mx-auto px-5 pt-10 pb-16 flex flex-col gap-16 md:gap-20">
         
+        <!-- PAGE TITLE -->
         <section class="flex flex-col items-center text-center gap-5 reveal">
             <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-4 py-1.5 shadow-lg">
                 <span class="w-1.5 h-1.5 rounded-full bg-white"></span> 
@@ -85,6 +87,7 @@
             </div>
         </section>
 
+        <!-- CASE STUDY 1: Laxdripofficial -->
         <section id="section-laxdrip" class="reveal">
             <div class="flex flex-col gap-3 mb-6 border-b border-gray-200 pb-4">
                 <p class="text-[11px] uppercase tracking-[0.28em] text-orange-500 font-bold">Case Study 01</p>
@@ -92,8 +95,10 @@
             </div>
 
             <div class="grid lg:grid-cols-[1.6fr,1fr] gap-6">
+                <!-- Videos Grid -->
                 <article class="opt-card-light p-5 flex flex-col gap-4">
                     <div class="grid grid-cols-3 gap-3">
+                        <!-- Video 1 Placeholder -->
                         <div class="opt-video-frame p-2">
                             <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative flex items-center justify-center video-placeholder aspect-[9/16]">
                                 <div class="w-10 h-10 rounded-full border-2 border-blue-500 flex items-center justify-center play-icon">
@@ -101,6 +106,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Video 2 Placeholder -->
                         <div class="opt-video-frame p-2">
                             <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative flex items-center justify-center video-placeholder aspect-[9/16]">
                                 <div class="w-10 h-10 rounded-full border-2 border-blue-500 flex items-center justify-center play-icon">
@@ -108,6 +114,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Video 3 Placeholder -->
                         <div class="opt-video-frame p-2">
                             <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative flex items-center justify-center video-placeholder aspect-[9/16]">
                                 <div class="w-10 h-10 rounded-full border-2 border-blue-500 flex items-center justify-center play-icon">
@@ -118,6 +125,7 @@
                     </div>
                 </article>
 
+                <!-- Metrics & Strategy -->
                 <div class="flex flex-col gap-4">
                     <article class="opt-card p-6 flex flex-col gap-4">
                         <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Growth Metrics</h3>
@@ -146,6 +154,7 @@
             </div>
         </section>
 
+        <!-- CASE STUDY 2: RatingKitchenCabinets -->
         <section id="section-rating" class="reveal">
             <div class="flex flex-col gap-3 mb-6 border-b border-gray-200 pb-4">
                 <p class="text-[11px] uppercase tracking-[0.28em] text-orange-500 font-bold">Case Study 02</p>
@@ -153,6 +162,7 @@
             </div>
 
             <div class="grid lg:grid-cols-[1.6fr,1fr] gap-6">
+                <!-- Videos Grid -->
                 <article class="opt-card-light p-5 flex flex-col gap-4">
                     <div class="grid grid-cols-3 gap-3">
                         <div class="opt-video-frame p-2">
@@ -179,6 +189,7 @@
                     </div>
                 </article>
 
+                <!-- Metrics & Strategy -->
                 <div class="flex flex-col gap-4">
                     <article class="opt-card p-6 flex flex-col gap-4">
                         <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Growth Metrics</h3>
@@ -207,6 +218,7 @@
             </div>
         </section>
 
+        <!-- CTA FOOTER -->
         <section class="text-center py-12 reveal">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Ready to get these results?</h3>
             <a href="index.html#Calender" class="inline-block bg-gradient-to-r from-blue-900 to-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
@@ -216,6 +228,7 @@
 
     </main>
 
+    <!-- Javascript for Animations -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const observer = new IntersectionObserver((entries) => {
