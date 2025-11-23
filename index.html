@@ -34,14 +34,14 @@
         
         /* Process Icons */
         .process-icon {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            border-radius: 16px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 16px;
             box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
         }
         
@@ -74,7 +74,7 @@
         
         /* Sticky Nav Glass Effect */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(229, 231, 235, 0.5);
         }
@@ -83,127 +83,147 @@
 <body class="font-sans text-gray-800 antialiased selection:bg-blue-100 selection:text-blue-900">
 
 <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-12 md:h-20 flex justify-between items-center">
+        
         <a href="#" class="flex items-center">
-            <img src="newlogo.png" alt="OptifyUp" class="h-8 w-auto"> 
+            <img src="newlogo.png" alt="OptifyUp" class="h-6 md:h-10 w-auto"> 
         </a>
         
         <div class="hidden md:flex space-x-8 items-center">
             <a href="#services" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Services</a>
             <a href="#results" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Results</a>
-            <a href="#portfolio" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Portfolio</a>
+            <!-- UPDATED: Now links to portfolio.html -->
+            <a href="portfolio.html" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Portfolio</a>
             <a href="#Calender" class="px-5 py-2 bg-blue-900 text-white rounded-full font-semibold hover:bg-blue-800 transition-all active:scale-95 text-sm">
                 Book Call
             </a>
         </div>
+
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-12 shadow-xl">
+        <div class="flex flex-col p-4 space-y-4 text-center">
+            <a href="#services" class="text-gray-600 hover:text-blue-900 font-medium py-2 border-b border-gray-50" onclick="toggleMenu()">Services</a>
+            <a href="#results" class="text-gray-600 hover:text-blue-900 font-medium py-2 border-b border-gray-50" onclick="toggleMenu()">Results</a>
+            <!-- UPDATED: Now links to portfolio.html -->
+            <a href="portfolio.html" class="text-gray-600 hover:text-blue-900 font-medium py-2 border-b border-gray-50" onclick="toggleMenu()">Portfolio</a>
+            <a href="#Calender" class="text-blue-900 font-bold py-2" onclick="toggleMenu()">Book a Free Call</a>
+        </div>
     </div>
 </nav>
-<section id="home" class="hero-gradient flex flex-col items-center pt-32 pb-16 px-6">
+
+<section id="home" class="hero-gradient flex flex-col items-center pt-28 pb-12 px-6">
     <div class="max-w-6xl mx-auto text-center reveal active">
         
-        <div class="mb-5">
+        <div class="mb-4">
             <div class="inline-flex items-center justify-center">
                 <img src="newlogo.png" alt="OptifyUp Logo" class="h-16 w-auto object-contain drop-shadow-xl">
             </div>
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
+        <h1 class="text-4xl md:text-7xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
             We Grow Your Social Media,<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600">So You Don't Have To.</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-lg md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
             <span class="font-bold text-gray-900 bg-blue-50 px-2 py-1 rounded-lg">Done for you</span> monthly social media marketing services.
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a href="#Calender">
-                <button class="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg blue-glow hover:from-blue-800 hover:to-blue-600 transition-all duration-300 hover:-translate-y-1 active:scale-95">
+                <button class="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-8 py-3 rounded-full font-bold text-lg blue-glow hover:from-blue-800 hover:to-blue-600 transition-all duration-300 hover:-translate-y-1 active:scale-95">
                     Book a Free Call
                 </button>
             </a>
             <a href="#results">
-                <button class="bg-white text-gray-900 px-10 py-4 rounded-full font-bold text-lg border-2 border-gray-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-900 transition-all duration-300 active:scale-95">
+                <button class="bg-white text-gray-900 px-8 py-3 rounded-full font-bold text-lg border-2 border-gray-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-900 transition-all duration-300 active:scale-95">
                     View Work
                 </button>
             </a>
         </div>
     </div>
 </section>
-<section id="services" class="py-24 px-6 bg-white">
+
+<section id="services" class="py-12 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
         <div class="reveal">
-            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">HOW IT WORKS</h2>
-            <p class="text-xl text-gray-600 text-center mb-16 max-w-2xl mx-auto">Our 4-Step Service Process</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-3">HOW IT WORKS</h2>
+            <p class="text-lg text-gray-600 text-center mb-10 max-w-2xl mx-auto">Our 4-Step Service Process</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div class="glow-card bg-white p-8 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
+            <div class="glow-card bg-white p-6 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
                 <div class="process-icon">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">1. Research</h4>
-                <p class="text-gray-600 leading-relaxed">We study top creators and best-performing content in your niche.</p>
+                <h4 class="text-lg font-bold text-gray-900 mb-2">1. Research</h4>
+                <p class="text-sm text-gray-600 leading-relaxed">We study top creators and best-performing content in your niche.</p>
             </div>
 
-            <div class="glow-card bg-white p-8 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
+            <div class="glow-card bg-white p-6 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
                 <div class="process-icon">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">2. Content Planning</h4>
-                <div class="text-sm text-gray-600 space-y-3 mt-2">
-                    <p><span class="font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded">Personal Brands:</span><br>Scripts for the entire month.</p>
+                <h4 class="text-lg font-bold text-gray-900 mb-2">2. Content Planning</h4>
+                <div class="text-xs text-gray-600 space-y-2 mt-1">
+                    <p><span class="font-bold text-blue-900 bg-blue-50 px-1 rounded">Personal Brands:</span><br>Scripts for the entire month.</p>
                     <div class="w-full h-px bg-gray-100"></div>
-                    <p><span class="font-bold text-orange-500 bg-orange-50 px-2 py-1 rounded">Niche Pages:</span><br>Trending top text & captions.</p>
+                    <p><span class="font-bold text-orange-500 bg-orange-50 px-1 rounded">Niche Pages:</span><br>Trending top text & captions.</p>
                 </div>
             </div>
 
-            <div class="glow-card bg-white p-8 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
+            <div class="glow-card bg-white p-6 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
                 <div class="process-icon">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">3. Film & Edit</h4>
-                <div class="text-sm text-gray-600 space-y-3 mt-2">
-                    <p><span class="font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded">Personal Brands:</span><br>You film, we edit professionally.</p>
+                <h4 class="text-lg font-bold text-gray-900 mb-2">3. Film & Edit</h4>
+                <div class="text-xs text-gray-600 space-y-2 mt-1">
+                    <p><span class="font-bold text-blue-900 bg-blue-50 px-1 rounded">Personal Brands:</span><br>You film, we edit professionally.</p>
                     <div class="w-full h-px bg-gray-100"></div>
-                    <p><span class="font-bold text-orange-500 bg-orange-50 px-2 py-1 rounded">Niche Pages:</span><br>Trending format edits.</p>
+                    <p><span class="font-bold text-orange-500 bg-orange-50 px-1 rounded">Niche Pages:</span><br>Trending format edits.</p>
                 </div>
             </div>
 
-            <div class="glow-card bg-white p-8 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
+            <div class="glow-card bg-white p-6 rounded-3xl text-center flex flex-col h-full border border-gray-50 reveal">
                 <div class="process-icon">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">4. Posting</h4>
-                <p class="text-gray-600 leading-relaxed">We handle uploads on IG, TikTok, FB, YouTube, & LinkedIn.</p>
+                <h4 class="text-lg font-bold text-gray-900 mb-2">4. Posting</h4>
+                <p class="text-sm text-gray-600 leading-relaxed">We handle uploads on IG, TikTok, FB, YouTube, & LinkedIn.</p>
             </div>
 
         </div>
     </div>
 </section>
 
-<section id="results" class="py-24 px-6 gradient-bg overflow-hidden">
+<section id="results" class="py-12 px-6 gradient-bg overflow-hidden">
     <div class="max-w-6xl mx-auto relative group reveal">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Client Results</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">Client Results</h2>
 
         <div class="overflow-hidden rounded-3xl relative z-0 bg-white/50 backdrop-blur-sm border border-white shadow-2xl">
             <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
                 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before1.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After1.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <a href="https://instagram.com/laxdripofficial" target="_blank" class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <a href="https://instagram.com/laxdripofficial" target="_blank" class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @laxdripofficial
                                 </a> 
                             </div>
@@ -211,21 +231,21 @@
                     </div>
                 </div>
                 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before2.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After2.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @laxdripofficial
                                 </span> 
                             </div>
@@ -233,21 +253,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before3.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After3.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @laxdripofficial
                                 </span> 
                             </div>
@@ -255,21 +275,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before4.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After4.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @ratingkitchencabinets
                                 </span> 
                             </div>
@@ -277,21 +297,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before5.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After5.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @ratingkitchencabinets
                                 </span> 
                             </div>
@@ -299,21 +319,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before6.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After6.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @ratingkitchencabinets
                                 </span> 
                             </div>
@@ -321,21 +341,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before7.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After7.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @ratingkitchencabinets
                                 </span> 
                             </div>
@@ -343,21 +363,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before8.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After8.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @battle_lax
                                 </span> 
                             </div>
@@ -365,21 +385,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before9.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After9.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @isid.insulation.drywall
                                 </span> 
                             </div>
@@ -387,21 +407,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before10.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After10.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @carslifely
                                 </span> 
                             </div>
@@ -409,21 +429,21 @@
                     </div>
                 </div>
 
-                <div class="min-w-full p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="min-w-full p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold mb-4">BEFORE</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl">
+                            <span class="inline-block px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold mb-3">BEFORE</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl">
                                 <img src="Before11.png" alt="Before" class="w-full h-auto rounded-xl shadow-inner">
                             </div>
                         </div>
                         <div class="text-center">
-                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold mb-4">AFTER</span>
-                            <div class="glow-card bg-white p-2 rounded-2xl mb-8 ring-4 ring-blue-50">
+                            <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-3">AFTER</span>
+                            <div class="glow-card bg-white p-1 rounded-2xl mb-6 ring-4 ring-blue-50">
                                 <img src="After11.png" alt="After" class="w-full h-auto rounded-xl shadow-md">
                             </div>
                             <div class="flex justify-center">
-                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
+                                <span class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center gap-2">
                                     @carslifely
                                 </span> 
                             </div>
@@ -434,73 +454,73 @@
             </div>
         </div>
 
-        <button id="prevBtn" class="absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white text-blue-900 p-4 rounded-full shadow-xl hover:scale-110 hover:bg-blue-50 transition-all z-10 focus:outline-none border border-gray-100">
+        <button id="prevBtn" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white text-blue-900 p-3 rounded-full shadow-lg hover:scale-110 hover:bg-blue-50 transition-all z-10 focus:outline-none border border-gray-100">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
         </button>
-        <button id="nextBtn" class="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-white text-blue-900 p-4 rounded-full shadow-xl hover:scale-110 hover:bg-blue-50 transition-all z-10 focus:outline-none border border-gray-100">
+        <button id="nextBtn" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white text-blue-900 p-3 rounded-full shadow-lg hover:scale-110 hover:bg-blue-50 transition-all z-10 focus:outline-none border border-gray-100">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
         </button>
 
-        <div class="flex justify-center mt-8 space-x-3" id="carousel-dots"></div>
+        <div class="flex justify-center mt-6 space-x-2" id="carousel-dots"></div>
     </div>
 </section>
 
-<section id="process" class="py-24 px-6 bg-white">
+<section id="process" class="py-12 px-6 bg-white">
     <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-4 reveal">How We Work</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4 reveal">How We Work</h2>
         
-        <p class="text-xl text-gray-600 text-center mb-16 reveal">Behind-the-Scenes Workflow</p>
+        <p class="text-lg text-gray-600 text-center mb-10 reveal">Behind-the-Scenes Workflow</p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 reveal">
-                <div class="mb-6 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
+            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 reveal">
+                <div class="mb-4 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
                     <img src="hiw1.png" alt="Research Sheet" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"> 
                 </div>
-                <div class="flex items-center mb-4">
+                <div class="flex items-center mb-2">
                     <span class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-lg mr-3">01</span>
-                    <h3 class="text-2xl font-bold text-gray-900">Research Sheet</h3>
+                    <h3 class="text-xl font-bold text-gray-900">Research Sheet</h3>
                 </div>
-                <p class="text-lg text-gray-600 leading-relaxed">
+                <p class="text-base text-gray-600 leading-relaxed">
                     We collect the top creators’ best-performing content, organize it into a sheet, study it, and select the best ideas to replicate for your brand.
                 </p>
             </div>
 
-            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 reveal">
-                <div class="mb-6 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
+            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 reveal">
+                <div class="mb-4 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
                     <img src="hiw2.png" alt="Captions Sheet" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
                 </div>
-                <div class="flex items-center mb-4">
+                <div class="flex items-center mb-2">
                     <span class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-lg mr-3">02</span>
-                    <h3 class="text-2xl font-bold text-gray-900">Captions & Top Text</h3>
+                    <h3 class="text-xl font-bold text-gray-900">Captions & Top Text</h3>
                 </div>
-                <p class="text-lg text-gray-600 leading-relaxed">
+                <p class="text-base text-gray-600 leading-relaxed">
                     For niche pages, we create trending top text and captions. For personal brands, we write short-form scripts for the entire month.
                 </p>
             </div>
 
-            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 reveal">
-                <div class="mb-6 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
+            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 reveal">
+                <div class="mb-4 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
                     <img src="hiw3.png" alt="Editing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
                 </div>
-                <div class="flex items-center mb-4">
+                <div class="flex items-center mb-2">
                     <span class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-lg mr-3">03</span>
-                    <h3 class="text-2xl font-bold text-gray-900">Professional Editing</h3>
+                    <h3 class="text-xl font-bold text-gray-900">Professional Editing</h3>
                 </div>
-                <p class="text-lg text-gray-600 leading-relaxed">
+                <p class="text-base text-gray-600 leading-relaxed">
                     We edit your videos in a trending style to make them look clean and professional, maximizing retention.
                 </p>
             </div>
 
-            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 reveal">
-                <div class="mb-6 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
+            <div class="glow-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 reveal">
+                <div class="mb-4 rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
                     <img src="hiw4.png" alt="Monthly Report" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
                 </div>
-                <div class="flex items-center mb-4">
+                <div class="flex items-center mb-2">
                     <span class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-lg mr-3">04</span>
-                    <h3 class="text-2xl font-bold text-gray-900">Monthly Report</h3>
+                    <h3 class="text-xl font-bold text-gray-900">Monthly Report</h3>
                 </div>
-                <p class="text-lg text-gray-600 leading-relaxed">
+                <p class="text-base text-gray-600 leading-relaxed">
                     We track each month’s insights in our custom-made sheet to show exactly how much you’ve grown.
                 </p>
             </div>
@@ -508,95 +528,92 @@
         </div>
     </div>
 </section>
-
-<section id="portfolio" class="py-24 px-6 gradient-bg">
-    <div class="max-w-4xl mx-auto relative group reveal">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Portfolio</h2>
+<!-- PORTFOLIO (Compact) -->
+<section id="portfolio" class="py-12 px-6 gradient-bg">
+    <div class="max-w-3xl mx-auto relative group reveal">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">Portfolio</h2>
         
-        <div class="max-w-2xl mx-auto mt-12">
-            <div class="glow-card bg-white rounded-3xl p-10 text-center border border-gray-100 shadow-2xl relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+        <div class="max-w-xl mx-auto mt-8">
+            <div class="glow-card bg-white rounded-3xl p-8 text-center border border-gray-100 shadow-xl relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
                 
-                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-400 to-orange-600"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600"></div>
                 <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-50 rounded-full opacity-50 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
 
                 <div class="relative z-10">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-blue-900">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4 text-blue-900">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
                     
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Recent work samples & strategies</h3>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Recent work samples & strategies</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">
                         Explore our latest client success stories, video edits, and growth strategies in detail.
                     </p>
 
                     <a href="portfolio.html" target="_blank">
-                        <button class="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto">
+                        <!-- UPDATED BUTTON COLOR: Changed from Blue gradient to Orange gradient -->
+                        <button class="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-3 rounded-full font-bold text-base shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto">
                             View Full Portfolio
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </button>
                     </a>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
-<section id="Calender" class="py-24 px-6 bg-white">
+<section id="Calender" class="py-12 px-6 bg-white">
     <div class="max-w-5xl mx-auto reveal">
-        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[550px] border border-gray-100">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[500px] border border-gray-100">
             
-            <div class="w-full md:w-1/3 p-8 border-r border-gray-100 flex flex-col bg-gray-50">
-                <div class="mb-8">
-                    <img src="Transparent BG.png" alt="OptifyUp" class="h-20 w-auto mb-4">
-                    <p class="text-sm text-gray-500 mt-1">30 Min Growth Call</p>
+            <div class="w-full md:w-1/3 p-6 border-r border-gray-100 flex flex-col bg-gray-50">
+                <div class="mb-6">
+                    <img src="With White BG.png" alt="OptifyUp" class="h-10 w-auto mb-3">
+                    <h2 class="text-lg font-bold text-gray-900">OptifyUp Strategy</h2>
+                    <p class="text-xs text-gray-500">30 Min Growth Call</p>
                 </div>
-                <div class="space-y-5 mb-8">
-                    <div class="flex items-center text-gray-700 font-medium">
-                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm mr-3 text-gray-400">
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center text-gray-700 font-medium text-sm">
+                        <div class="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-sm mr-3 text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         30 Mins
                     </div>
-                    <div class="flex items-center text-gray-700 font-medium">
-                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm mr-3 text-gray-400">
+                    <div class="flex items-center text-gray-700 font-medium text-sm">
+                        <div class="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-sm mr-3 text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         </div>
                         Fri, Nov 21, 2025
                     </div>
                 </div>
-                <div class="mt-auto pt-6 border-t border-gray-200">
-                    <p class="text-xs text-gray-400 uppercase tracking-wider font-bold">Note</p>
-                    <p class="text-xs text-gray-500 mt-1">Google Meet link sent upon confirmation.</p>
+                <div class="mt-auto pt-4 border-t border-gray-200">
+                    <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Note</p>
+                    <p class="text-[11px] text-gray-500 mt-1">Google Meet link sent upon confirmation.</p>
                 </div>
             </div>
 
-            <div class="w-full md:w-2/3 p-8 md:p-10">
-                <h3 class="text-2xl font-bold text-gray-900 mb-8">Select Date & Time</h3>
+            <div class="w-full md:w-2/3 p-6 md:p-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Select Date & Time</h3>
                 
-                <div class="flex flex-col lg:flex-row gap-10">
+                <div class="flex flex-col lg:flex-row gap-6">
                     <div class="flex-1">
-                        <div class="flex justify-between items-center mb-6 px-2">
-                            <button class="p-2 hover:bg-gray-100 rounded-full text-gray-400 transition-colors">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                            </button>
-                            <span class="text-lg font-bold text-gray-900">November 2025</span>
-                            <button class="p-2 bg-blue-50 hover:bg-blue-100 rounded-full text-blue-900 transition-colors">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </button>
+                        <div class="flex justify-between items-center mb-4 px-2">
+                            <button class="p-1 hover:bg-gray-100 rounded-full text-gray-400"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                            <span class="text-base font-bold text-gray-900">November 2025</span>
+                            <button class="p-1 bg-blue-50 rounded-full text-blue-900"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
                         </div>
 
-                        <div class="grid grid-cols-7 mb-3 text-center">
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">S</span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">M</span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">T</span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">W</span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">T</span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">F</span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">S</span>
+                        <div class="grid grid-cols-7 mb-2 text-center">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">S</span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">M</span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">T</span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">W</span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">T</span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">F</span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">S</span>
                         </div>
 
-                        <div class="grid grid-cols-7 gap-2 text-center text-sm">
+                        <div class="grid grid-cols-7 gap-1 text-center text-xs">
                             <span class="p-2"></span><span class="p-2"></span><span class="p-2"></span><span class="p-2"></span><span class="p-2"></span><span class="p-2"></span>
                             <button class="calendar-day text-gray-300">1</button>
                             <button class="calendar-day text-gray-300">2</button>
@@ -618,7 +635,7 @@
                             <button class="calendar-day text-gray-300">18</button>
                             <button class="calendar-day text-gray-300">19</button>
                             <button class="calendar-day text-gray-300">20</button>
-                            <button class="calendar-day selected shadow-lg transform scale-110">21</button>
+                            <button class="calendar-day selected shadow-md">21</button>
                             <button class="calendar-day text-gray-300">22</button>
                             <button class="calendar-day text-gray-300">23</button>
                             <button class="calendar-day text-blue-900 bg-blue-50 hover:bg-blue-100 font-bold available">24</button>
@@ -631,52 +648,77 @@
                         </div>
                     </div>
 
-                    <div class="w-full lg:w-48 flex flex-col space-y-3 pt-2">
-                        <button class="w-full py-3 px-4 rounded-xl border border-gray-200 text-gray-600 font-medium hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all text-center active:scale-95">02:00 PM</button>
-                        <button class="w-full py-3 px-4 rounded-xl border border-gray-200 text-gray-600 font-medium hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all text-center active:scale-95">02:30 PM</button>
-                        <button class="w-full py-3 px-4 rounded-xl border border-gray-200 text-gray-600 font-medium hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all text-center active:scale-95">03:00 PM</button>
-                         <button class="w-full py-3 px-4 rounded-xl bg-blue-900 text-white font-bold shadow-lg hover:bg-blue-800 transition-all text-center mt-4 active:scale-95">
-                            Confirm
-                        </button>
+                    <div class="w-full lg:w-40 flex flex-col space-y-2 pt-1">
+                        <button class="w-full py-2 px-3 rounded-lg border border-gray-200 text-sm font-medium hover:border-blue-600 hover:bg-blue-50 transition-all active:scale-95">02:00 PM</button>
+                        <button class="w-full py-2 px-3 rounded-lg border border-gray-200 text-sm font-medium hover:border-blue-600 hover:bg-blue-50 transition-all active:scale-95">02:30 PM</button>
+                        <button class="w-full py-2 px-3 rounded-lg border border-gray-200 text-sm font-medium hover:border-blue-600 hover:bg-blue-50 transition-all active:scale-95">03:00 PM</button>
+                         <button class="w-full py-2 px-3 rounded-lg bg-blue-900 text-white text-sm font-bold shadow-md hover:bg-blue-800 transition-all mt-2 active:scale-95">Confirm</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section id="contact" class="py-16 px-6 bg-white border-t border-gray-100">
-    <div class="max-w-4xl mx-auto text-center reveal">
-        <div class="mb-8">
-            <img src="newlogo.png" alt="OptifyUp Logo" class="h-16 w-auto mx-auto">
+
+<section id="contact" class="py-8 px-6 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto text-center reveal active">
+        
+        <div class="mb-4">
+            <img src="newlogo.png" alt="OptifyUp Logo" class="h-12 w-auto mx-auto">
         </div>
-        <h3 class="text-3xl font-bold text-gray-900 mb-4">Contact Us</h3>
-        <div class="space-y-2 mb-8">
-            <p class="text-xl text-gray-600 font-medium">Have questions? Email us at:</p>
-            <a href="mailto:optifyup@gmail.com" class="block text-2xl font-bold text-blue-900 hover:text-blue-700 transition-colors">
+
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Contact Us</h3>
+
+        <div class="space-y-1 mb-6">
+            <p class="text-base md:text-lg text-gray-600 font-medium">Have questions? Email us at:</p>
+            <a href="mailto:optifyup@gmail.com" class="block text-xl md:text-2xl font-bold text-blue-900 hover:text-blue-700 transition-colors">
                 optifyup@gmail.com
             </a>
         </div>
 
-        <div class="flex justify-center space-x-6 mb-8">
-            <a href="instalogo.png" target="_blank" class="transition-all hover:scale-110 transform">
+        <div class="flex justify-center space-x-6 mb-6">
+            
+            <a href="https://www.instagram.com/optifyup/" target="_blank" class="transition-all hover:scale-110 transform">
                 <span class="sr-only">Instagram</span>
                 <img src="instalogo.png" alt="Instagram" class="h-8 w-8">
             </a>
+
+            <a href="https://www.facebook.com/" target="_blank" class="transition-all hover:scale-110 transform">
+                <span class="sr-only">Facebook</span>
+                <img src="facebooklogo.png" alt="Facebook" class="h-8 w-8">
+            </a>
+
+            <a href="https://www.linkedin.com" target="_blank" class="transition-all hover:scale-110 transform">
+                <span class="sr-only">LinkedIn</span>
+                <img src="linkdinlogo.png" alt="LinkedIn" class="h-8 w-8">
+            </a>
+
+            <a href="https://www.upwork.com" target="_blank" class="transition-all hover:scale-110 transform">
+                <span class="sr-only">Upwork</span>
+                <img src="upworklogo.png" alt="Upwork" class="h-8 w-8">
+            </a>
+
         </div>
 
-        <div class="text-sm text-gray-500 pt-8 border-t border-gray-100">
+        <div class="text-sm text-gray-500 pt-6 border-t border-gray-100">
             Copyright 2025 OptifyUp. All rights reserved.
         </div>
     </div>
 </section>
+
 <script>
+    // NAVBAR TOGGLE
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function toggleMenu() { mobileMenu.classList.toggle('hidden'); }
+    if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+
     document.addEventListener('DOMContentLoaded', function() {
-        
-        // --- SCROLL REVEAL ANIMATION ---
+        // SCROLL REVEAL
         const reveals = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             const windowHeight = window.innerHeight;
-            const elementVisible = 100;
+            const elementVisible = 80;
             reveals.forEach((reveal) => {
                 const elementTop = reveal.getBoundingClientRect().top;
                 if (elementTop < windowHeight - elementVisible) {
@@ -685,9 +727,9 @@
             });
         };
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Trigger once on load
+        revealOnScroll();
 
-        // --- CAROUSEL FUNCTION ---
+        // CAROUSEL LOGIC
         function setupCarousel(trackId, nextBtnId, prevBtnId, dotsId) {
             const track = document.getElementById(trackId);
             if (!track) return; 
@@ -743,9 +785,8 @@
         }
 
         setupCarousel('carousel-track', 'nextBtn', 'prevBtn', 'carousel-dots');
-        setupCarousel('portfolio-track', 'port-nextBtn', 'port-prevBtn', 'portfolio-dots');
 
-        // --- CALENDAR INTERACTION ---
+        // CALENDAR LOGIC
         document.querySelectorAll('.calendar-day.available').forEach(day => {
             day.addEventListener('click', function() {
                 document.querySelectorAll('.calendar-day.selected').forEach(d => {
