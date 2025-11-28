@@ -1,439 +1,1512 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OptifyUp - Portfolio</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- Global Styles --- */
-        body {
-            margin: 0;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-            color: #4b5563;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <title>OptifyUp Portfolio</title>
+  
+  <!-- External Dependencies -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  
+  <style>
+    /* Base Styles */
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+      color: #4b5563;
+    }
 
-        /* --- Scroll Animations --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 700ms ease, transform 700ms ease;
-        }
-        .reveal-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-left { transform: translateX(-40px); }
-        .reveal-right { transform: translateX(40px); }
-        .reveal-zoom { transform: scale(0.96); }
-        
-        .reveal-left.reveal-visible,
-        .reveal-right.reveal-visible,
-        .reveal-zoom.reveal-visible {
-            transform: translateX(0) scale(1);
-        }
+    html,
+    body {
+      height: 100%;
+    }
 
-        /* --- Cards & UI --- */
-        .opt-card {
-            border-radius: 24px;
-            background-color: #ffffff;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
-        }
-        .opt-card-light {
-            border-radius: 24px;
-            background-color: #f8fafc;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            border: 1px solid #f1f5f9;
-        }
-        .opt-video-frame {
-            border-radius: 20px;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            overflow: hidden;
-        }
-        .opt-grid-gap { gap: 1.75rem; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* --- Interactive Elements --- */
-        .nav-link {
-            position: relative;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .nav-link::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 0;
-            height: 2px;
-            background-color: #1e3a8a;
-            transition: width 200ms ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-        
-        /* Section Offset for Sticky Header */
-        section { scroll-margin-top: 6rem; }
+    /* Component Styles */
+    .opt-card {
+      border-radius: 24px;
+      background-color: #ffffff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+    }
 
-        /* Video Hover Effects */
-        .video-placeholder { transition: all 0.3s ease; }
-        .video-placeholder:hover { border-color: #3b82f6; }
-        .video-placeholder:hover .play-icon { 
-            transform: scale(1.1); 
-            transition: transform 0.3s ease; 
-        }
-        
-        /* Glass Navigation */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
-        }
-    </style>
+    .opt-card-light {
+      border-radius: 24px;
+      background-color: #f8fafc;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .opt-border-accent {
+      border-radius: 24px;
+      border: 1px solid rgba(30, 58, 138, 0.2);
+    }
+
+    .opt-glow {
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3), 0 20px 40px rgba(30, 58, 138, 0.15);
+    }
+
+    .opt-soft-glow-orange {
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.4),
+        0 20px 40px rgba(249, 115, 22, 0.2);
+    }
+
+    .opt-video-frame {
+      border-radius: 24px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .opt-grid-gap {
+      gap: 1.75rem;
+    }
+
+    .focus-outline:focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 3px;
+    }
+
+    .nav-link {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      background-color: #1e3a8a;
+      transition: width 200ms ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    section {
+      scroll-margin-top: 4rem;
+    }
+
+    /* Animation Styles */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease,
+        box-shadow 500ms ease;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      transform: translateX(-40px);
+    }
+
+    .reveal-right {
+      transform: translateX(40px);
+    }
+
+    .reveal-zoom {
+      transform: scale(0.96);
+    }
+
+    .reveal-left.reveal-visible,
+    .reveal-right.reveal-visible,
+    .reveal-zoom.reveal-visible {
+      transform: translateX(0) scale(1);
+    }
+  </style>
+  
+  <style>@view-transition { navigation: auto; }</style>
 </head>
-<body class="h-full antialiased">
-
-    <!-- HEADER -->
-    <header class="w-full sticky top-0 z-50 glass-nav">
-        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
-            
-            <!-- Logo (Links to Home) -->
-            <a href="index.html" class="flex items-center gap-3 group hover:opacity-80 transition-opacity">
-                <img src="newlogo.png" alt="OptifyUp Logo" class="h-8 md:h-10 w-auto">
-                <div class="leading-tight hidden sm:block">
-                    <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wide group-hover:text-blue-900 transition-colors">Back to Home</p>
-                </div>
-            </a>
-
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-6 text-xs text-gray-700 font-medium">
-                <button class="nav-link hover:text-[#1e3a8a]" onclick="document.getElementById('section-header').scrollIntoView({behavior: 'smooth'})">Top</button>
-                <button class="nav-link hover:text-[#1e3a8a]" onclick="document.getElementById('section-laxdrip').scrollIntoView({behavior: 'smooth'})">Laxdrip</button>
-                <button class="nav-link hover:text-[#1e3a8a]" onclick="document.getElementById('section-rating').scrollIntoView({behavior: 'smooth'})">RatingKitchen</button>
-                <button class="nav-link hover:text-[#1e3a8a]" onclick="document.getElementById('section-battle').scrollIntoView({behavior: 'smooth'})">BattleLax</button>
-                <a href="index.html#Calender" class="px-4 py-2 bg-[#1e3a8a] text-white rounded-full hover:bg-blue-800 transition-all shadow-md">Book Call</a>
-            </nav>
+<body class="h-full">
+  <!-- Header -->
+  <header class="w-full sticky top-0 z-20 backdrop-blur-md bg-white/80 border-b border-slate-200" aria-label="OptifyUp navigation">
+    <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#3b82f6] to-[#1e3a8a] shadow-lg">
+          <span class="font-semibold tracking-tight text-sm text-white" id="brand-mark" aria-label="OptifyUp logo">OU</span>
         </div>
-    </header>
+        <div class="leading-tight hidden sm:block">
+          <p class="text-xs uppercase tracking-[0.22em] text-[#f97316] font-semibold" id="brand-name">OptifyUp</p>
+          <p class="text-[11px] text-gray-600">Social Media Agency · Portfolio</p>
+        </div>
+      </div>
+      
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-xs text-gray-700 font-medium">
+        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-header">Top</button>
+        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-laxdrip">Laxdripofficial</button>
+        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-rating">RatingKitchenCabinets</button>
+        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-battle">BattleLax</button>
+        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-footer">Contact</button>
+      </nav>
+    </div>
+  </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="max-w-6xl mx-auto px-5 pt-10 pb-16 flex flex-col gap-16 md:gap-20">
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-5 pt-10 pb-16 flex flex-col gap-16 md:gap-20" aria-label="OptifyUp portfolio content">
+    <!-- Hero Section -->
+    <section id="section-header" class="flex flex-col items-center text-center gap-5 reveal reveal-zoom" aria-labelledby="page-title">
+      <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f97316] to-[#fb923c] px-4 py-1.5 shadow-lg">
+        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+        <span class="text-[11px] uppercase tracking-[0.24em] text-white font-semibold">OptifyUp Portfolio</span>
+      </div>
+      <div class="space-y-3">
+        <h1 id="page-title" class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">Portfolio</h1>
+        <p id="page-subheadline" class="text-sm md:text-base text-[#4b5563] max-w-xl mx-auto">Real Clients. Real Results.</p>
+      </div>
+    </section>
+
+<!-- Laxdripofficial Case Study -->
+<section id="section-laxdrip" class="reveal">
+  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
+    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">Laxdripofficial</h2>
+  </div>
+  
+  <!-- Mobile Layout -->
+  <div class="flex flex-col lg:hidden gap-4">
+    <!-- Video 1 -->
+    <div class="flex flex-col gap-3">
+      <article class="opt-card-light p-4">
+        <div class="opt-video-frame p-2">
+          <div onclick="openVideo('video1.mov')" class="w-full bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
+            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110 transition-transform z-10">
+              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+            </div>
+            <span class="absolute bottom-3 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Play Video 1</span>
+          </div>
+        </div>
+      </article>
+      <article class="opt-card p-4">
+        <h3 class="text-sm font-bold text-[#111827] mb-2">Video #1 Metrics</h3>
+        <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+          <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">4M</dd></div>
+          <div class="flex justify-between"><dt>Followers</dt><dd class="font-bold text-[#111827]">+6,643</dd></div>
+          <div class="flex justify-between"><dt>Likes</dt><dd class="font-bold text-[#111827]">91.9k</dd></div>
+          <div class="flex justify-between"><dt>Channel</dt><dd class="font-bold text-[#111827]">Instagram Reel</dd></div>
+        </dl>
+      </article>
+    </div>
+    
+    <!-- Video 2 -->
+    <div class="flex flex-col gap-3">
+      <article class="opt-card-light p-4">
+        <div class="opt-video-frame p-2">
+          <div onclick="openVideo('video2.mp4')" class="w-full bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
+            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110 transition-transform z-10">
+              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+            </div>
+            <span class="absolute bottom-3 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Play Video 2</span>
+          </div>
+        </div>
+      </article>
+      <article class="opt-card p-4">
+        <h3 class="text-sm font-bold text-[#111827] mb-2">Video #2 Metrics</h3>
+        <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+          <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">55.5k</dd></div>
+          <div class="flex justify-between"><dt>Followers</dt><dd class="font-bold text-[#111827]">+800</dd></div>
+          <div class="flex justify-between"><dt>Likes</dt><dd class="font-bold text-[#111827]">1,826</dd></div>
+          <div class="flex justify-between"><dt>Channel</dt><dd class="font-bold text-[#111827]">Instagram Reel</dd></div>
+        </dl>
+      </article>
+    </div>
+    
+    <!-- Story -->
+    <div class="flex flex-col gap-3">
+      <article class="opt-card-light p-4">
+        <div class="opt-video-frame p-2">
+          <div onclick="openImage('store.png')" class="w-full bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer aspect-[9/16] rounded-[20px] group">
+            <div class="text-center">
+              <span class="text-2xl">📸</span>
+              <p class="text-[10px] text-gray-400">View Story</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="opt-card p-4">
+        <h3 class="text-sm font-bold text-[#111827] mb-2">Story Metrics</h3>
+        <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+          <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">2,470</dd></div>
+          <div class="flex justify-between"><dt>Link Clicks</dt><dd class="font-bold text-[#111827]">123</dd></div>
+          <div class="flex justify-between"><dt>Channel</dt><dd class="font-bold text-[#111827]">Instagram Story</dd></div>
+        </dl>
+      </article>
+    </div>
+    
+    <!-- Strategy -->
+    <article class="opt-card p-4">
+      <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
+      <p class="text-[11px] text-[#4b5563] leading-relaxed">
+        Our goal was to grow a real lacrosse audience and send more people to the Laxdrip website for equipment reviews. To do this, we posted viral lacrosse highlights with our own clean style, added helpful top text, and wrote short educational captions. We also used stories and review videos to push viewers to the website. This helped us grow followers fast and increase website clicks and brand awareness.
+      </p>
+    </article>
+  </div>
+  
+  <!-- Desktop Layout -->
+  <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
+    <article class="opt-card-light p-6 flex flex-col gap-4">
+      <div class="grid grid-cols-3 gap-4">
+        <!-- Desktop Video 1 -->
+        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+          <div onclick="openVideo('video1.mov')" class="w-full bg-white flex items-center justify-center relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
+            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110">
+              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+            </div>
+            <span class="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Video 1</span>
+          </div>
+        </div>
+        <!-- Desktop Video 2 -->
+        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+          <div onclick="openVideo('video2.mp4')" class="w-full bg-white flex items-center justify-center relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
+            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110">
+              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+            </div>
+            <span class="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Video 2</span>
+          </div>
+        </div>
+        <!-- Desktop Story -->
+        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+          <div onclick="openImage('store.png')" class="w-full bg-white flex items-center justify-center relative cursor-pointer aspect-[9/16] rounded-[20px] group">
+            <div class="text-center">
+              <span class="text-2xl">📸</span>
+              <p class="text-[10px] text-gray-600 font-medium">Story Screenshot</p>
+            </div>
+            <span class="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Instagram Story</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Desktop Metrics & Strategy -->
+    <div class="flex flex-col gap-4">
+      <article class="opt-card p-5">
+        <h3 class="text-sm font-bold text-[#111827] uppercase tracking-wide mb-3">Growth Metrics</h3>
+        <dl class="text-xs text-[#4b5563] space-y-3">
+          <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+            <div>
+              <dt class="font-medium text-gray-700">Total Views</dt>
+              <dd class="font-bold text-[#111827] text-lg">4M+</dd>
+            </div>
+          </div>
+          <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+            <div>
+              <dt class="font-medium text-gray-700">Followers Gained</dt>
+              <dd class="font-bold text-[#111827] text-lg">+7,443</dd>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <dt class="font-medium text-gray-700">Link Clicks</dt>
+              <dd class="font-bold text-[#111827] text-lg">123</dd>
+            </div>
+          </div>
+        </dl>
+      </article>
+      <article class="opt-card p-5 bg-blue-50 border border-blue-100">
+        <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
+        <p class="text-xs text-[#4b5563] leading-relaxed">
+          Our goal was to grow a real lacrosse audience and send more people to the Laxdrip website for equipment reviews. To do this, we posted viral lacrosse highlights with our own clean style, added helpful top text, and wrote short educational captions. We also used stories and review videos to push viewers to the website. This helped us grow followers fast and increase website clicks and brand awareness.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+    <!-- RatingKitchenCabinets Case Study -->
+    <section id="section-rating" class="reveal reveal-left" aria-label="Client case study RatingKitchenCabinets">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">RatingKitchenCabinets</h2>
+      </div>
+      
+      <!-- Mobile Layout -->
+      <div class="flex flex-col lg:hidden gap-4">
+        <!-- Video 1 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="RatingKitchenCabinets video 1">
+            <div class="opt-video-frame p-2">
+               <div onclick="openVideo('video1.mov')" class="w-full rounded-[20px] bg-white flex items-center justify-center relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="rating-1">                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 1 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 1 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
         
-        <!-- 1. HERO HEADER -->
-        <section id="section-header" class="flex flex-col items-center text-center gap-5 reveal reveal-zoom">
-            <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f97316] to-[#fb923c] px-4 py-1.5 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-white"></span> 
-                <span class="text-[11px] uppercase tracking-[0.24em] text-white font-semibold">OptifyUp Portfolio</span>
-            </div>
-            <div class="space-y-3">
-                <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[#111827]">Recent work samples & strategies</h1>
-                <p class="text-sm md:text-base text-[#4b5563] max-w-xl mx-auto">Real Clients. Real Results.</p>
-            </div>
-        </section>
-
-        <!-- 2. CASE STUDY: LAXDRIP -->
-        <section id="section-laxdrip" class="reveal">
-            <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-                <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">Laxdripofficial</h2>
-            </div>
-
-            <div class="grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
-                <!-- Videos -->
-                <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
-                    <div class="grid grid-cols-3 gap-3 sm:gap-4">
-                        <!-- Video Item 1 -->
-                        <div class="opt-video-frame p-2 sm:p-2.5">
-                            <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16]" data-video-id="lax-1">
-                                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
-                                    <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Video Item 2 -->
-                        <div class="opt-video-frame p-2 sm:p-2.5">
-                            <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16]" data-video-id="lax-2">
-                                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
-                                    <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Video Item 3 -->
-                        <div class="opt-video-frame p-2 sm:p-2.5">
-                            <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16]" data-video-id="lax-3">
-                                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
-                                    <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Metrics -->
-                <div class="flex flex-col gap-3 sm:gap-4">
-                    <article class="opt-card p-4 sm:p-5 flex flex-col gap-3">
-                        <h3 class="text-sm font-bold text-[#111827] uppercase tracking-wide">Growth Metrics</h3>
-                        <dl class="text-[11px] sm:text-xs text-[#4b5563] space-y-3">
-                            <div class="flex justify-between border-b border-gray-50 pb-2">
-                                <dt>Total Views</dt>
-                                <dd class="font-bold text-[#111827]">+2.4M</dd>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-50 pb-2">
-                                <dt>Followers Gained</dt>
-                                <dd class="font-bold text-[#111827]">+15K</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt>Channel</dt>
-                                <dd class="font-bold text-[#111827]">IG / TikTok</dd>
-                            </div>
-                        </dl>
-                    </article>
-                    <article class="opt-card p-4 sm:p-5 flex flex-col gap-3 bg-blue-50 border border-blue-100">
-                        <h3 class="text-sm font-bold text-[#1e3a8a]">Strategy</h3>
-                        <p class="text-[11px] sm:text-xs text-[#4b5563] leading-relaxed">
-                            We focused on high-energy edits and trending audio to capture the lacrosse niche. By analyzing competitor data, we replicated viral hooks which skyrocketed engagement within the first 3 seconds.
-                        </p>
-                    </article>
+        <!-- Video 2 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="RatingKitchenCabinets video 2">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="rating-2">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
                 </div>
-            </div>
-        </section>
-
-        <!-- 3. CASE STUDY: RATING KITCHEN -->
-        <section id="section-rating" class="reveal reveal-left">
-            <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-                <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">RatingKitchenCabinets</h2>
-            </div>
-
-            <div class="grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
-                <!-- Video Gallery -->
-                <article class="opt-card-light p-4 sm:p-5 md:p-6 flex flex-col gap-4">
-                    <div class="grid grid-cols-3 gap-3">
-                        <div class="opt-video-frame p-2">
-                            <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16]">
-                                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
-                                    <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opt-video-frame p-2">
-                            <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16]">
-                                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
-                                    <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opt-video-frame p-2">
-                            <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16]">
-                                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
-                                    <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Metrics -->
-                <div class="flex flex-col gap-3 sm:gap-4">
-                    <article class="opt-card p-4 sm:p-5 flex flex-col gap-3">
-                        <h3 class="text-sm font-bold text-[#111827] uppercase tracking-wide">Growth Metrics</h3>
-                        <dl class="text-[11px] sm:text-xs text-[#4b5563] space-y-3">
-                            <div class="flex justify-between border-b border-gray-50 pb-2">
-                                <dt>Total Views</dt>
-                                <dd class="font-bold text-[#111827]">+850K</dd>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-50 pb-2">
-                                <dt>Leads Generated</dt>
-                                <dd class="font-bold text-[#111827]">450+</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt>Channel</dt>
-                                <dd class="font-bold text-[#111827]">IG / Reels</dd>
-                            </div>
-                        </dl>
-                    </article>
-                    <article class="opt-card p-4 sm:p-5 flex flex-col gap-3 bg-blue-50 border border-blue-100">
-                        <h3 class="text-sm font-bold text-[#1e3a8a]">Strategy</h3>
-                        <p class="text-[11px] sm:text-xs text-[#4b5563] leading-relaxed">
-                            Positioned as an authority in kitchen renovations. We used "before vs after" transitions and educational overlays to drive high-intent leads directly to DMs.
-                        </p>
-                    </article>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
                 </div>
+              </div>
             </div>
-        </section>
-
-        <!-- 4. BATTLE LAX & ISID (Grid Layout) -->
-        <div class="grid lg:grid-cols-2 gap-8" id="section-battle">
-            <!-- Battle Lax -->
-            <section class="reveal reveal-left flex flex-col gap-4">
-                <div class="mb-2">
-                    <p class="text-[11px] font-bold text-[#f97316] uppercase tracking-[0.2em]">Case Study 03</p>
-                    <h2 class="text-2xl font-bold text-[#111827]">BattleLax</h2>
-                </div>
-                <article class="opt-card-light p-4 grid grid-cols-3 gap-2">
-                    <div class="opt-video-frame aspect-[9/16] bg-white"></div>
-                    <div class="opt-video-frame aspect-[9/16] bg-white"></div>
-                    <div class="opt-video-frame aspect-[9/16] bg-white"></div>
-                </article>
-                <article class="opt-card p-5">
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Positioned the brand for the lacrosse audience and turned engagement into sustainable growth through community building.
-                    </p>
-                </article>
-            </section>
-
-            <!-- Isid Insulation -->
-            <section id="section-isid" class="reveal reveal-right flex flex-col gap-4">
-                <div class="mb-2">
-                    <p class="text-[11px] font-bold text-[#f97316] uppercase tracking-[0.2em]">Case Study 04</p>
-                    <h2 class="text-2xl font-bold text-[#111827]">ISID Insulation</h2>
-                </div>
-                <article class="opt-card-light p-4 grid grid-cols-3 gap-2">
-                    <div class="opt-video-frame aspect-[9/16] bg-white"></div>
-                    <div class="opt-video-frame aspect-[9/16] bg-white"></div>
-                    <div class="opt-video-frame aspect-[9/16] bg-white"></div>
-                </article>
-                <article class="opt-card p-5">
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Focused on local targeting and showcasing quality workmanship to generate construction leads in specific geographic areas.
-                    </p>
-                </article>
-            </section>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 2 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 2 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
         </div>
-
-        <!-- 5. GRAPHICS GALLERY -->
-        <section id="section-graphics-1" class="reveal reveal-zoom">
-            <div class="flex flex-col gap-3 mb-6">
-                <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-medium">Graphics Gallery</p>
-                <h2 class="text-2xl md:text-3xl font-bold text-[#111827]">Graphic Design Projects</h2>
-            </div>
-            <article class="opt-card-light p-5 md:p-6">
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <div class="rounded-2xl bg-[#0D1720] border border-slate-700 shadow-lg aspect-[4/5]"></div>
-                    <div class="rounded-2xl bg-[#0D1720] border border-slate-700 shadow-lg aspect-[4/5]"></div>
-                    <div class="rounded-2xl bg-[#0D1720] border border-slate-700 shadow-lg aspect-[4/5] hidden sm:block"></div>
+        
+        <!-- Video 3 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="RatingKitchenCabinets video 3">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="rating-3">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
                 </div>
-                <p class="text-xs text-gray-500 mt-4">
-                    Custom social media graphics designed to capture attention and drive engagement. Each graphic was crafted with strategic messaging.
-                </p>
-            </article>
-        </section>
-
-        <!-- 6. CAROUSEL GRAPHICS -->
-        <section id="section-graphics-2" class="reveal reveal-left">
-            <div class="flex flex-col gap-3 mb-6">
-                <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-medium">Carousel Graphics</p>
-                <h2 class="text-2xl md:text-3xl font-bold text-[#111827]">One-Time Graphic Project</h2>
-            </div>
-            <article class="opt-card-light p-5 md:p-6">
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Carousel 1 -->
-                    <div class="rounded-3xl bg-[#0D1720] border border-slate-700 p-3 flex gap-1 h-32 items-end">
-                         <div class="w-full h-full bg-slate-800 rounded-xl opacity-50"></div>
-                         <div class="w-full h-full bg-slate-800 rounded-xl opacity-80 -ml-2"></div>
-                         <div class="w-full h-full bg-slate-800 rounded-xl -ml-2"></div>
-                    </div>
-                    <!-- Carousel 2 -->
-                    <div class="rounded-3xl bg-[#0D1720] border border-slate-700 p-3 flex gap-1 h-32 items-end">
-                         <div class="w-full h-full bg-slate-800 rounded-xl opacity-50"></div>
-                         <div class="w-full h-full bg-slate-800 rounded-xl opacity-80 -ml-2"></div>
-                         <div class="w-full h-full bg-slate-800 rounded-xl -ml-2"></div>
-                    </div>
-                    <!-- Carousel 3 -->
-                    <div class="rounded-3xl bg-[#0D1720] border border-slate-700 p-3 flex gap-1 h-32 items-end">
-                         <div class="w-full h-full bg-slate-800 rounded-xl opacity-50"></div>
-                         <div class="w-full h-full bg-slate-800 rounded-xl opacity-80 -ml-2"></div>
-                         <div class="w-full h-full bg-slate-800 rounded-xl -ml-2"></div>
-                    </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
                 </div>
-                <p class="text-xs text-gray-500 mt-4">
-                    Multi-slide carousel graphics designed for Instagram and LinkedIn to tell a cohesive story across multiple frames.
-                </p>
-            </article>
-        </section>
-
-        <!-- 7. ADS & LONG FORM -->
-        <section id="section-scale" class="reveal reveal-right">
-            <div class="flex flex-col gap-3 mb-6">
-                <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-medium">Ad Creative</p>
-                <h2 class="text-2xl md:text-3xl font-bold text-[#111827]">High-Conversion Ads</h2>
+              </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-6">
-                <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
-                    <h3 class="font-bold text-gray-900">ScaleWithConnor</h3>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="opt-video-frame aspect-square bg-white"></div>
-                        <div class="opt-video-frame aspect-square bg-white"></div>
-                        <div class="opt-video-frame aspect-square bg-white"></div>
-                    </div>
-                    <p class="text-xs text-gray-500">Paid ads optimized for conversion and high CTR.</p>
-                </article>
-
-                <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
-                    <h3 class="font-bold text-gray-900">ValueTechStrategies</h3>
-                    <div class="opt-video-frame w-full aspect-[16/9] bg-white"></div>
-                    <p class="text-xs text-gray-500">Website hero video explaining complex services simply.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- CTA SECTION -->
-        <section class="py-16 text-center reveal">
-            <h2 class="text-3xl font-bold text-[#111827] mb-6">Ready to scale your brand?</h2>
-            <a href="index.html#Calender" class="inline-block bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] text-white px-12 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform hover:shadow-2xl">
-                Book Your Strategy Call
-            </a>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer id="section-footer" class="border-t border-slate-200 bg-white py-8">
-        <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <img src="newlogo.png" alt="OptifyUp Logo" class="h-10 w-auto">
-                <div class="text-xs text-gray-600">
-                    <p class="font-bold text-[#111827] text-[13px]">OptifyUp · Social Media Agency</p>
-                    <p class="text-[11px] mt-0.5">Copyright 2025 OptifyUp. All rights reserved.</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-center md:items-end gap-2 text-xs">
-                <p class="text-gray-500 font-semibold">Connect</p>
-                <div class="flex gap-4">
-                    <a href="https://www.instagram.com/optifyup/" target="_blank" class="hover:scale-110 transition-transform"><img src="instalogo.png" class="h-5 w-5" alt="IG"></a>
-                    <a href="https://www.facebook.com/" target="_blank" class="hover:scale-110 transition-transform"><img src="facebooklogo.png" class="h-5 w-5" alt="FB"></a>
-                    <a href="https://www.linkedin.com" target="_blank" class="hover:scale-110 transition-transform"><img src="linkdinlogo.png" class="h-5 w-5" alt="IN"></a>
-                    <a href="https://www.upwork.com" target="_blank" class="hover:scale-110 transition-transform"><img src="upworklogo.png" class="h-5 w-5" alt="Upwork"></a>
-                </div>
-                <a href="mailto:hello@optifyup.com" class="text-[11px] text-blue-900 font-bold mt-1 hover:underline">hello@optifyup.com</a>
-            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 3 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 3 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
         </div>
-    </footer>
+        
+        <!-- Strategy Box (mobile) -->
+        <article class="opt-card p-4 flex flex-col gap-3" aria-label="RatingKitchenCabinets strategy">
+          <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
+          <p class="text-[11px] text-[#4b5563]">Reserve this card for a concise explanation of how OptifyUp positioned the brand, structured reviews, and turned watch time into DMs and leads.</p>
+        </article>
+      </div>
+      
+      <!-- Desktop Layout -->
+      <div class="hidden lg:flex lg:flex-col lg:grid lg:grid-cols-[1.5fr,1fr] opt-grid-gap">
+        <!-- Video Gallery -->
+        <article class="opt-card-light p-4 sm:p-5 md:p-6 flex flex-col gap-4" aria-label="RatingKitchenCabinets video gallery">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" aria-hidden="true">
+            <div class="opt-video-frame p-2">
+                <div onclick="openVideo('video1.mov')" class="w-full rounded-[20px] bg-white flex items-center justify-center relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="rating-1">                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="rating-2">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="rating-3">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Details + Strategy -->
+        <div class="flex flex-col gap-3 sm:gap-4">
+          <article class="opt-card p-4 sm:p-5 flex flex-col gap-3" aria-label="RatingKitchenCabinets metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Growth Metrics</h3>
+            <dl class="text-[11px] sm:text-xs text-[#4b5563] space-y-2">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Number of views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Increase number of followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Number of likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Channel</dt>
+                <dd class="font-bold text-[#111827]">Instagram / YouTube</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="opt-card p-4 sm:p-5 flex flex-col gap-3" aria-label="RatingKitchenCabinets strategy">
+            <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
+            <p class="text-[11px] sm:text-xs text-[#4b5563]">Reserve this card for a concise explanation of how OptifyUp positioned the brand, structured reviews, and turned watch time into DMs and leads.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <!-- ANIMATION SCRIPT -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('reveal-visible');
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, { threshold: 0.1 });
+    <!-- BattleLax Case Study -->
+    <section id="section-battle" class="reveal reveal-right" aria-label="Client case study BattleLax">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">BattleLax</h2>
+      </div>
+      
+      <!-- Mobile Layout -->
+      <div class="flex flex-col lg:hidden gap-4">
+        <!-- Video 1 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="BattleLax video 1">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="battle-1">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 1 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 1 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        
+        <!-- Video 2 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="BattleLax video 2">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="battle-2">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 2 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 2 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        
+        <!-- Video 3 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="BattleLax video 3">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="battle-3">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 3 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 3 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        
+        <!-- Strategy Box (mobile) -->
+        <article class="opt-card p-4 flex flex-col gap-3" aria-label="BattleLax strategy">
+          <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
+          <p class="text-[11px] text-[#4b5563]">Reserve this card for a concise explanation of how OptifyUp positioned the brand for the lacrosse audience and turned engagement into growth.</p>
+        </article>
+      </div>
+      
+      <!-- Desktop Layout -->
+      <div class="hidden lg:flex lg:flex-col lg:grid lg:grid-cols-[1.5fr,1fr] opt-grid-gap">
+        <!-- Videos -->
+        <article class="opt-card-light p-4 sm:p-5 md:p-6 flex flex-col gap-4" aria-label="BattleLax video gallery">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" aria-hidden="true">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="battle-1">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="battle-2">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="battle-3">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Details -->
+        <div class="flex flex-col gap-3 sm:gap-4">
+          <article class="opt-card p-4 sm:p-5 flex flex-col gap-3" aria-label="BattleLax metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Growth Metrics</h3>
+            <dl class="text-[11px] sm:text-xs text-[#4b5563] space-y-2">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Number of views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Increase number of followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Number of likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Channel</dt>
+                <dd class="font-bold text-[#111827]">Instagram / TikTok</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="opt-card p-4 sm:p-5 flex flex-col gap-3" aria-label="BattleLax strategy">
+            <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
+            <p class="text-[11px] sm:text-xs text-[#4b5563]">Reserve this card for a concise explanation of how OptifyUp positioned the brand for the lacrosse audience and turned engagement into growth.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SECTION 5 — isid.insulation.drywall Case Study -->
+    <section id="section-isid" class="reveal reveal-up" aria-label="Client case study isid.insulation.drywall">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">isid.insulation.drywall</h2>
+      </div>
+      
+      <!-- Mobile Layout -->
+      <div class="flex flex-col lg:hidden gap-4">
+        <!-- Video 1 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="isid.insulation.drywall video 1">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="isid-1">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 1 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 1 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        
+        <!-- Video 2 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="isid.insulation.drywall video 2">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="isid-2">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 2 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 2 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        
+        <!-- Video 3 with metrics -->
+        <div class="flex flex-col gap-3">
+          <article class="opt-card-light p-4 flex flex-col gap-3" aria-label="isid.insulation.drywall video 3">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="isid-3">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="opt-card p-4 flex flex-col gap-2" aria-label="Video 3 metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Video 3 Metrics</h3>
+            <dl class="text-[11px] text-[#4b5563] space-y-1.5">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        
+        <!-- Strategy Box (mobile) -->
+        <article class="opt-card p-4 flex flex-col gap-3" aria-label="isid.insulation.drywall strategy">
+          <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
+          <p class="text-[11px] text-[#4b5563]">Reserve this card for a concise explanation of how OptifyUp positioned the brand, structured messaging, and turned local targeting into leads.</p>
+        </article>
+      </div>
+      
+      <!-- Desktop Layout -->
+      <div class="hidden lg:flex lg:flex-col lg:grid lg:grid-cols-[1.5fr,1fr] opt-grid-gap">
+        <!-- Video Section -->
+        <article class="opt-card-light p-4 sm:p-5 md:p-6 flex flex-col gap-4" aria-label="isid.insulation.drywall reels">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" aria-hidden="true">
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="isid-1">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="isid-2">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="opt-video-frame p-2">
+              <div class="w-full rounded-[20px] bg-white border border-dashed border-slate-300 relative cursor-pointer video-placeholder" style="aspect-ratio: 9/16;" data-video-id="isid-3">
+                <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                  <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 mute-indicator hidden">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Details + Strategy -->
+        <div class="flex flex-col gap-3 sm:gap-4">
+          <article class="opt-card p-4 sm:p-5 flex flex-col gap-3" aria-label="isid.insulation.drywall metrics">
+            <h3 class="text-sm font-bold text-[#111827]">Growth Metrics</h3>
+            <dl class="text-[11px] sm:text-xs text-[#4b5563] space-y-2">
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Number of views</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Increase number of followers</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Number of likes</dt>
+                <dd class="font-bold text-[#111827]">Add value</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-gray-500">Channel</dt>
+                <dd class="font-bold text-[#111827]">Instagram</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="opt-card p-4 sm:p-5 flex flex-col gap-3" aria-label="isid.insulation.drywall strategy">
+            <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
+            <p class="text-[11px] sm:text-xs text-[#4b5563]">Reserve this card for a concise explanation of how OptifyUp positioned the brand, structured messaging, and turned local targeting into leads.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    <!-- SECTION 6 — One-Time Graphic Project #1 -->
+    <section id="section-graphics-1" class="reveal reveal-zoom" aria-label="One-time graphic project 1">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00]/80 font-medium">Graphics Gallery</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">One-Time Graphic Project #1</h2>
+      </div>
+      <article class="opt-card-light p-4 sm:p-5 md:p-6" aria-label="Graphic posts grid">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
+          <!-- Instagram post placeholders - 4:5 aspect ratio -->
+          <div class="rounded-2xl sm:rounded-3xl bg-[#0D1720] border border-[#22445A]/70 shadow-[0_18px_40px_rgba(0,0,0,0.6)]" style="aspect-ratio: 4/5;" aria-hidden="true"></div>
+          <div class="rounded-2xl sm:rounded-3xl bg-[#0D1720] border border-[#22445A]/70 shadow-[0_18px_40px_rgba(0,0,0,0.6)]" style="aspect-ratio: 4/5;"></div>
+          <div class="rounded-2xl sm:rounded-3xl bg-[#0D1720] border border-[#22445A]/70 shadow-[0_18px_40px_rgba(0,0,0,0.6)] col-span-2 sm:col-span-1" style="aspect-ratio: 4/5;"></div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <p class="text-xs text-[#4b5563]">Custom social media graphics designed to capture attention and drive engagement. Each graphic was crafted with strategic messaging and on-brand visuals to maximize impact across Instagram, Facebook, and other social platforms.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 7 — One-Time Graphic Project #2 -->
+    <section id="section-graphics-2" class="reveal reveal-left" aria-label="One-time graphic project 2 carousel posts">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00]/80 font-medium">Carousel Graphics</p>
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">One-Time Graphic Project #2</h2>
+      </div>
+      <article class="opt-card-light p-5 md:p-6" aria-label="Carousel graphics gallery">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Each block: visualising a carousel set -->
+          <div class="rounded-3xl bg-[#0D1720] border border-[#22445A]/70 p-3 flex gap-1">
+            <div class="flex-1 h-32 rounded-2xl bg-[#112434]"></div>
+            <div class="w-3 h-32 rounded-xl bg-[#0D1720] border border-dashed border-slate-600"></div>
+            <div class="w-3 h-32 rounded-xl bg-[#0D1720] border border-dashed border-slate-600"></div>
+          </div>
+          <div class="rounded-3xl bg-[#0D1720] border border-[#22445A]/70 p-3 flex gap-1">
+            <div class="flex-1 h-32 rounded-2xl bg-[#112434]"></div>
+            <div class="w-3 h-32 rounded-xl bg-[#0D1720] border border-dashed border-slate-600"></div>
+            <div class="w-3 h-32 rounded-xl bg-[#0D1720] border border-dashed border-slate-600"></div>
+          </div>
+          <div class="rounded-3xl bg-[#0D1720] border border-[#22445A]/70 p-3 flex gap-1">
+            <div class="flex-1 h-32 rounded-2xl bg-[#112434]"></div>
+            <div class="w-3 h-32 rounded-xl bg-[#0D1720] border border-dashed border-slate-600"></div>
+            <div class="w-3 h-32 rounded-xl bg-[#0D1720] border border-dashed border-slate-600"></div>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <p class="text-xs text-[#4b5563]">Multi-slide carousel graphics designed for Instagram and Facebook. Each carousel tells a cohesive story across multiple frames, encouraging users to swipe through and engage with the full content sequence for maximum reach and interaction.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 8 — ScaleWithConnor -->
+    <section id="section-scale" class="reveal reveal-right" aria-label="Client case study ScaleWithConnor advertisement videos">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00]/80 font-medium">Ad Creative</p>
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">ScaleWithConnor</h2>
+      </div>
+      <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4" aria-label="ScaleWithConnor ad videos">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" aria-hidden="true">
+          <div class="opt-video-frame p-2">
+            <div class="w-full rounded-[20px] bg-[#0D1720] flex items-center justify-center" style="aspect-ratio: 1/1;"></div>
+          </div>
+          <div class="opt-video-frame p-2">
+            <div class="w-full rounded-[20px] bg-[#0D1720] border border-dashed border-slate-600" style="aspect-ratio: 1/1;"></div>
+          </div>
+          <div class="opt-video-frame p-2">
+            <div class="w-full rounded-[20px] bg-[#0D1720] border border-dashed border-slate-600" style="aspect-ratio: 1/1;"></div>
+          </div>
+        </div>
+        <div class="mt-3 space-y-2">
+          <p class="text-xs text-slate-300">Paid ads produced for ScaleWithConnor.</p>
+          <p class="text-xs text-[#4b5563]">High-converting advertisement videos designed to drive engagement and conversions. Each video was crafted with strategic messaging and compelling visuals to maximize ROI across social media platforms.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 9 — ValueTechStrategies -->
+    <section id="section-vts" class="reveal reveal-up" aria-label="Client case study ValueTechStrategies">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Website Main Video</p>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ValueTechStrategies (VTS)</h2>
+      </div>
+      <!-- Single YouTube video -->
+      <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4" aria-label="VTS YouTube video">
+        <div class="opt-video-frame p-3 w-full">
+          <div class="rounded-2xl bg-white flex items-center justify-center border border-dashed border-slate-300 w-full" style="aspect-ratio: 16/9;">
+            <div class="w-14 h-14 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+              <div class="ml-0.5 w-5 h-5 border-l-[14px] border-l-[#3b82f6] border-y-[9px] border-y-transparent"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 space-y-2">
+          <p class="text-xs text-[#4b5563]">Professional long-form content created for ValueTechStrategies' website. This video serves as the main hero content, explaining their services and value proposition with clear, engaging storytelling that converts visitors into clients.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 10 — ChamberlandCedar -->
+    <section id="section-chamber" class="reveal reveal-up" aria-label="Client case study ChamberlandCedar">
+      <div class="flex flex-col gap-3 mb-4">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00]/80 font-medium">Client Work</p>
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">ChamberlandCedar</h2>
+      </div>
+      <div class="flex flex-col lg:grid lg:grid-cols-2 opt-grid-gap">
+        <!-- Video Section -->
+        <article class="opt-card-light p-5 md:p-6 flex flex-col gap-3" aria-label="ChamberlandCedar video">
+          <h3 class="text-sm font-bold text-[#111827]">Ad Video</h3>
+          <div class="opt-video-frame p-2">
+            <div class="w-full rounded-[20px] bg-[#0D1720] flex items-center justify-center" style="aspect-ratio: 1/1;">
+              <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
+                <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 space-y-2">
+            <p class="text-xs text-[#4b5563]">Cinematic advertisement showcasing the quality and craftsmanship of Chamberland Cedar products. This video highlights the natural beauty of cedar materials and positions the brand as a premium choice.</p>
+          </div>
+        </article>
+        <!-- Graphic Section -->
+        <article class="opt-card-light p-5 md:p-6 flex flex-col gap-3" aria-label="ChamberlandCedar graphic">
+          <h3 class="text-sm font-bold text-[#111827]">Graphic Ad</h3>
+          <div class="rounded-2xl sm:rounded-3xl bg-[#0D1720] border border-[#22445A]/70 shadow-[0_18px_40px_rgba(0,0,0,0.6)]" style="aspect-ratio: 1/1;" aria-hidden="true"></div>
+          <div class="mt-2 space-y-2">
+            <p class="text-xs text-[#4b5563]">Custom social media graphic designed to capture attention and showcase Chamberland Cedar's premium brand identity across Instagram and Facebook platforms.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer id="section-footer" class="border-t border-slate-200 bg-white py-6" aria-label="OptifyUp footer">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#3b82f6] to-[#1e3a8a] shadow-lg">
+          <span class="font-semibold text-xs text-white">OU</span>
+        </div>
+        <div class="text-xs text-gray-600">
+          <p class="font-bold text-[#111827] text-[13px]">OptifyUp · Social Media Agency</p>
+          <p id="footer-copyright" class="text-[11px] mt-0.5">© 2025 OptifyUp. All rights reserved.</p>
+        </div>
+      </div>
+      <div class="flex flex-col items-center md:items-end gap-2 text-xs">
+        <p class="text-gray-500 font-semibold">Connect</p>
+        <div class="flex gap-3 text-[#4b5563] font-medium">
+          <a href="#" class="focus-outline hover:text-[#1e3a8a] transition-colors" aria-label="OptifyUp Instagram (placeholder link)">Instagram</a>
+          <a href="#" class="focus-outline hover:text-[#1e3a8a] transition-colors" aria-label="OptifyUp LinkedIn (placeholder link)">LinkedIn</a>
+          <a href="#" class="focus-outline hover:text-[#1e3a8a] transition-colors" aria-label="OptifyUp TikTok (placeholder link)">TikTok</a>
+        </div>
+        <p id="footer-contact-email" class="text-[11px] text-gray-600">hello@optifyup.com</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Sleek Media Modal -->
+<div id="mediaModal" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-all duration-300">
+  <div class="relative bg-gray-900 rounded-2xl shadow-2xl max-w-2xl w-full mx-auto overflow-hidden border border-gray-700/50">
+    <!-- Header with title and close button -->
+    <!-- Header with title and close button -->
+<div class="flex items-center justify-between p-4 border-b border-gray-700/50 bg-gray-800/50">
+  <h3 class="text-white font-semibold text-lg" id="modalTitle">Video Preview</h3>
+  <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-colors duration-200 p-1 rounded-lg hover:bg-gray-700/50">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+    
+    <!-- Media container -->
+    <div class="relative aspect-video bg-black">
+      <video id="modalVideo" class="w-full h-full object-contain hidden" controls></video>
+      <img id="modalImage" class="w-full h-full object-contain hidden" alt="Modal content">
+    </div>
+    
+    <!-- Footer with additional info -->
+    <div class="p-4 border-t border-gray-700/50 bg-gray-800/30">
+      <div class="flex items-center justify-between text-sm text-gray-300">
+        <span>CUTUP CART</span>
+        <span class="font-mono">Laxdrip</span>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- JavaScript -->
+  <script>
+    // Scroll Animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => e.isIntersecting && e.target.classList.add('reveal-visible'));
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+
+    // Smooth in-page navigation
+    document.addEventListener('DOMContentLoaded', () => {
+      const navButtons = document.querySelectorAll("[data-scroll-target]");
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const target = btn.getAttribute("data-scroll-target");
+          if (!target) return;
+          const el = document.querySelector(target);
+          if (!el) return;
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
         });
-    </script>
+      });
+    });
 
-</body>
+    // Video Player Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoStates = new Map();
+      
+      // Handle video placeholder clicks
+      document.addEventListener('click', function(e) {
+        const placeholder = e.target.closest('.video-placeholder');
+        if (!placeholder) return;
+        const videoId = placeholder.getAttribute('data-video-id');
+        if (!videoId) return;
+        
+        // Check if video element already exists
+        let videoEl = placeholder.querySelector('video');
+       
+        if (!videoEl) {
+          // Create video element
+          videoEl = document.createElement('video');
+          videoEl.className = 'w-full h-full rounded-[20px] object-cover';
+          videoEl.muted = true;
+          videoEl.loop = true;
+          videoEl.playsInline = true;
+          videoEl.controls = false;
+         
+          // In production, set actual video source here
+          // videoEl.src = 'path/to/video.mov'; // Changed to .mov
+         
+          // Clear placeholder content and add video
+          placeholder.innerHTML = '';
+          placeholder.appendChild(videoEl);
+         
+          // Add mute toggle button
+          const muteBtn = document.createElement('button');
+          muteBtn.className = 'absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 hover:bg-black/80 transition-colors focus-outline';
+          muteBtn.setAttribute('aria-label', 'Toggle mute');
+          muteBtn.innerHTML = `
+            <svg class="w-4 h-4 text-white mute-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+            <svg class="w-4 h-4 text-white unmute-icon hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/>
+            </svg>
+          `;
+          placeholder.appendChild(muteBtn);
+         
+          // Mute toggle handler
+          muteBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            videoEl.muted = !videoEl.muted;
+            const muteIcon = muteBtn.querySelector('.mute-icon');
+            const unmuteIcon = muteBtn.querySelector('.unmute-icon');
+           
+            if (videoEl.muted) {
+              muteIcon.classList.remove('hidden');
+              unmuteIcon.classList.add('hidden');
+            } else {
+              muteIcon.classList.add('hidden');
+              unmuteIcon.classList.remove('hidden');
+            }
+          });
+         
+          videoStates.set(videoId, { element: videoEl, muted: true });
+        }
+       
+        // Toggle play/pause
+        if (videoEl.paused) {
+          videoEl.play().catch(err => {
+            console.error('Video play failed:', err);
+          });
+        } else {
+          videoEl.pause();
+        }
+      });
+    });
+
+    function openVideo(src, title = "Video Preview") {
+  const modal = document.getElementById('mediaModal');
+  const videoEl = document.getElementById('modalVideo');
+  const imgEl = document.getElementById('modalImage');
+  const modalTitle = document.getElementById('modalTitle');
+  
+  // Set the dynamic title
+  if (modalTitle) {
+    modalTitle.textContent = title;
+  }
+  
+  // Reset and prepare modal
+  modal.classList.remove('hidden');
+  videoEl.classList.remove('hidden');
+  imgEl.classList.add('hidden');
+  
+  // Set video source and properties
+  videoEl.src = src;
+  videoEl.style.objectFit = 'contain';
+  videoEl.controls = true;
+  
+  // Smooth appearance
+  setTimeout(() => {
+    modal.classList.remove('opacity-0');
+  }, 10);
+  
+  // Play video
+  videoEl.play().catch(err => {
+    console.log('Autoplay prevented:', err);
+  });
+}
+
+function openImage(src) {
+  const modal = document.getElementById('mediaModal');
+  const videoEl = document.getElementById('modalVideo');
+  const imgEl = document.getElementById('modalImage');
+  
+  modal.classList.remove('hidden');
+  imgEl.classList.remove('hidden');
+  videoEl.classList.add('hidden');
+  videoEl.pause();
+  
+  imgEl.src = src;
+  imgEl.style.objectFit = 'contain';
+  
+  setTimeout(() => {
+    modal.classList.remove('opacity-0');
+  }, 10);
+}
+
+function closeModal() {
+  const modal = document.getElementById('mediaModal');
+  const videoEl = document.getElementById('modalVideo');
+  
+  modal.classList.add('opacity-0');
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    videoEl.pause();
+    videoEl.src = "";
+    videoEl.controls = false;
+  }, 300);
+  modal.addEventListener('click', (e) => {
+  if(e.target === modal) closeModal();
+});
+}
+    
+    // Close on click outside
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) closeModal();
+    });
+
+    // Element SDK Configuration
+    (async function () {
+      if (!window.elementSdk) {
+        return;
+      }
+      
+      const defaultConfig = {
+        // Colors - OptifyUp brand theme
+        background_color: "#f8fafc",
+        surface_color: "#ffffff",
+        text_color: "#4b5563",
+        primary_action_color: "#1e3a8a",
+        secondary_action_color: "#f97316",
+        // Typography
+        font_family: "SF Pro Text",
+        font_size: 14,
+        // Edit panel text
+        page_title: "Portfolio",
+        page_subheadline: "Real Clients. Real Results.",
+        footer_contact_email: "hello@optifyup.com",
+        footer_copyright: "© 2025 OptifyUp. All rights reserved.",
+      };
+
+      // Cache common DOM references for onConfigChange
+      const bodyEl = document.body;
+      const mainEl = document.querySelector("main");
+      const headerEl = document.querySelector("header");
+      const footerEl = document.querySelector("footer");
+      const cards = document.querySelectorAll(".opt-card, .opt-card-light");
+      const buttonsAndLinks = document.querySelectorAll(
+        "button, a, [role='button']"
+      );
+      const headings = document.querySelectorAll("h1, h2, h3");
+      const paragraphs = document.querySelectorAll("p, dl, li, span, dt, dd");
+      const pageTitleEl = document.getElementById("page-title");
+      const pageSubheadlineEl = document.getElementById("page-subheadline");
+      const footerEmailEl = document.getElementById("footer-contact-email");
+      const footerCopyrightEl = document.getElementById("footer-copyright");
+
+      async function onConfigChange(config) {
+        const cfg = Object.assign({}, defaultConfig, config || {});
+        const baseFontStack = "system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif";
+        const customFont = cfg.font_family || defaultConfig.font_family;
+        const baseSize = Number(cfg.font_size) || defaultConfig.font_size;
+        
+        // Colors
+        const backgroundColor = cfg.background_color || defaultConfig.background_color;
+        const surfaceColor = cfg.surface_color || defaultConfig.surface_color;
+        const textColor = cfg.text_color || defaultConfig.text_color;
+        const primaryActionColor = cfg.primary_action_color || defaultConfig.primary_action_color;
+        const secondaryActionColor = cfg.secondary_action_color || defaultConfig.secondary_action_color;
+        
+        // Apply background
+        if (bodyEl) {
+          bodyEl.style.backgroundColor = backgroundColor;
+          bodyEl.style.color = textColor;
+        }
+        
+        if (mainEl) {
+          mainEl.style.color = textColor;
+        }
+        
+        if (headerEl) {
+          headerEl.style.borderColor = secondaryActionColor;
+        }
+        
+        if (footerEl) {
+          footerEl.style.borderColor = secondaryActionColor;
+        }
+        
+        // Apply surface colors to cards
+        cards.forEach((card) => {
+          if (card.classList.contains("opt-card-light")) {
+            card.style.backgroundColor = surfaceColor;
+          } else {
+            card.style.backgroundColor = surfaceColor;
+          }
+          card.style.color = textColor;
+        });
+        
+        // Apply colors to buttons/links
+        buttonsAndLinks.forEach((el) => {
+          el.style.color = textColor;
+        });
+        
+        // Headings font + size
+        headings.forEach((el) => {
+          el.style.fontFamily = customFont + ", " + baseFontStack;
+        });
+        
+        // Primary font scaling
+        if (pageTitleEl) {
+          pageTitleEl.style.fontFamily = customFont + ", " + baseFontStack;
+          pageTitleEl.style.fontSize = baseSize * 2 + "px";
+        }
+        
+        if (pageSubheadlineEl) {
+          pageSubheadlineEl.style.fontFamily =
+            customFont + ", " + baseFontStack;
+          pageSubheadlineEl.style.fontSize = baseSize * 1.1 + "px";
+        }
+        
+        paragraphs.forEach((el) => {
+          el.style.fontFamily = customFont + ", " + baseFontStack;
+          // Use classes and semantics to approximate scaling
+          if (el.tagName.toLowerCase() === "p") {
+            el.style.fontSize = baseSize + "px";
+          } else {
+            el.style.fontSize = baseSize * 0.85 + "px";
+          }
+        });
+        
+        // Apply OptifyUp accent colors where appropriate
+        const accentBadges = document.querySelectorAll(
+          ".nav-link::after"
+        );
+        
+        // Pseudo-elements can't be accessed directly; main accent is set via CSS using primary_action_color
+        
+        // Editable text content
+        if (pageTitleEl && cfg.page_title) {
+          pageTitleEl.textContent = cfg.page_title;
+        }
+        
+        if (pageSubheadlineEl && cfg.page_subheadline) {
+          pageSubheadlineEl.textContent = cfg.page_subheadline;
+        }
+        
+        if (footerEmailEl && cfg.footer_contact_email) {
+          footerEmailEl.textContent = cfg.footer_contact_email;
+        }
+        
+        if (footerCopyrightEl && cfg.footer_copyright) {
+          footerCopyrightEl.textContent = cfg.footer_copyright;
+        }
+      }
+
+      function mapToCapabilities(config) {
+        const cfg = Object.assign({}, defaultConfig, config || {});
+        return {
+          recolorables: [
+            {
+              // BACKGROUND
+              get: () =>
+                (window.elementSdk.config &&
+                  window.elementSdk.config.background_color) ||
+                cfg.background_color,
+              set: (value) => {
+                const c =
+                  window.elementSdk.config || cfg;
+                c.background_color = value;
+                window.elementSdk.setConfig({
+                  background_color: value,
+                });
+              },
+            },
+            {
+              // SECONDARY_SURFACE
+              get: () =>
+                (window.elementSdk.config &&
+                  window.elementSdk.config.surface_color) ||
+                cfg.surface_color,
+              set: (value) => {
+                const c =
+                  window.elementSdk.config || cfg;
+                c.surface_color = value;
+                window.elementSdk.setConfig({
+                  surface_color: value,
+                });
+              },
+            },
+            {
+              // TEXT
+              get: () =>
+                (window.elementSdk.config &&
+                  window.elementSdk.config.text_color) ||
+                cfg.text_color,
+              set: (value) => {
+                const c =
+                  window.elementSdk.config || cfg;
+                c.text_color = value;
+                window.elementSdk.setConfig({
+                  text_color: value,
+                });
+              },
+            },
+            {
+              // PRIMARY_ACTION (buttons / highlights)
+              get: () =>
+                (window.elementSdk.config &&
+                  window.elementSdk.config.primary_action_color) ||
+                cfg.primary_action_color,
+              set: (value) => {
+                const c =
+                  window.elementSdk.config || cfg;
+                c.primary_action_color = value;
+                window.elementSdk.setConfig({
+                  primary_action_color: value,
+                });
+              },
+            },
+            {
+              // SECONDARY_ACTION (borders / subtle accents)
+              get: () =>
+                (window.elementSdk.config &&
+                  window.elementSdk.config.secondary_action_color) ||
+                cfg.secondary_action_color,
+              set: (value) => {
+                const c =
+                  window.elementSdk.config || cfg;
+                c.secondary_action_color = value;
+                window.elementSdk.setConfig({
+                  secondary_action_color: value,
+                });
+              },
+            },
+          ],
+          fontEditable: {
+            get: () =>
+              (window.elementSdk.config &&
+                window.elementSdk.config.font_family) ||
+              cfg.font_family,
+            set: (value) => {
+              const c = window.elementSdk.config || cfg;
+              c.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            },
+          },
+          fontSizeable: {
+            get: () =>
+              (window.elementSdk.config &&
+                window.elementSdk.config.font_size) ||
+              cfg.font_size,
+            set: (value) => {
+              const c = window.elementSdk.config || cfg;
+              c.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            },
+          },
+          borderables: [],
+        };
+      }
+
+      function mapToEditPanelValues(config) {
+        const cfg = Object.assign({}, defaultConfig, config || {});
+        return new Map([
+          ["page_title", cfg.page_title],
+          ["page_subheadline", cfg.page_subheadline],
+          ["footer_contact_email", cfg.footer_contact_email],
+          ["footer_copyright", cfg.footer_copyright],
+        ]);
+      }
+
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues,
+      });
+
+      // Apply initial config
+      await onConfigChange(window.elementSdk.config || defaultConfig);
+    })();
+  </script>
+  </body>
 </html>
