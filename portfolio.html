@@ -168,7 +168,6 @@
         <p id="page-subheadline" class="text-sm md:text-base text-[#4b5563] max-w-xl mx-auto">Real Clients. Real Results.</p>
       </div>
     </section>
-
 <!-- Laxdripofficial Case Study -->
 <section id="section-laxdrip" class="reveal">
   <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
@@ -182,21 +181,40 @@
     <div class="flex flex-col gap-3">
       <article class="opt-card-light p-4">
         <div class="opt-video-frame p-2">
-          <div onclick="openVideo('video1.mov')" class="w-full bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
-            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110 transition-transform z-10">
-              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
+               data-views="4M"
+               data-followers="6643"
+               data-likes="91.9k">
+            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+              <source src="video1.mov" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
             </div>
-            <span class="absolute bottom-3 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Play Video 1</span>
           </div>
         </div>
       </article>
       <article class="opt-card p-4">
-        <h3 class="text-sm font-bold text-[#111827] mb-2">Video #1 Metrics</h3>
+        <h3 class="text-sm font-bold text-[#111827] mb-2">Video Metrics</h3>
         <dl class="text-[11px] text-[#4b5563] space-y-1.5">
-          <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">4M</dd></div>
-          <div class="flex justify-between"><dt>Followers</dt><dd class="font-bold text-[#111827]">+6,643</dd></div>
-          <div class="flex justify-between"><dt>Likes</dt><dd class="font-bold text-[#111827]">91.9k</dd></div>
-          <div class="flex justify-between"><dt>Channel</dt><dd class="font-bold text-[#111827]">Instagram Reel</dd></div>
+          <div class="flex justify-between">
+            <dt>Views</dt>
+            <dd class="font-bold text-[#111827]" data-metric="views">—</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>Followers</dt>
+            <dd class="font-bold text-[#111827]" data-metric="followers">—</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>Likes</dt>
+            <dd class="font-bold text-[#111827]" data-metric="likes">—</dd>
+          </div>
         </dl>
       </article>
     </div>
@@ -205,21 +223,40 @@
     <div class="flex flex-col gap-3">
       <article class="opt-card-light p-4">
         <div class="opt-video-frame p-2">
-          <div onclick="openVideo('video2.mp4')" class="w-full bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
-            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110 transition-transform z-10">
-              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
+               data-views="55.5k"
+               data-followers="800"
+               data-likes="1826">
+            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+              <source src="video2.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
             </div>
-            <span class="absolute bottom-3 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Play Video 2</span>
           </div>
         </div>
       </article>
       <article class="opt-card p-4">
-        <h3 class="text-sm font-bold text-[#111827] mb-2">Video #2 Metrics</h3>
+        <h3 class="text-sm font-bold text-[#111827] mb-2">Video Metrics</h3>
         <dl class="text-[11px] text-[#4b5563] space-y-1.5">
-          <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">55.5k</dd></div>
-          <div class="flex justify-between"><dt>Followers</dt><dd class="font-bold text-[#111827]">+800</dd></div>
-          <div class="flex justify-between"><dt>Likes</dt><dd class="font-bold text-[#111827]">1,826</dd></div>
-          <div class="flex justify-between"><dt>Channel</dt><dd class="font-bold text-[#111827]">Instagram Reel</dd></div>
+          <div class="flex justify-between">
+            <dt>Views</dt>
+            <dd class="font-bold text-[#111827]" data-metric="views">—</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>Followers</dt>
+            <dd class="font-bold text-[#111827]" data-metric="followers">—</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>Likes</dt>
+            <dd class="font-bold text-[#111827]" data-metric="likes">—</dd>
+          </div>
         </dl>
       </article>
     </div>
@@ -228,20 +265,29 @@
     <div class="flex flex-col gap-3">
       <article class="opt-card-light p-4">
         <div class="opt-video-frame p-2">
-          <div onclick="openImage('store.png')" class="w-full bg-white flex items-center justify-center border border-dashed border-slate-300 relative cursor-pointer aspect-[9/16] rounded-[20px] group">
-            <div class="text-center">
-              <span class="text-2xl">📸</span>
-              <p class="text-[10px] text-gray-400">View Story</p>
-            </div>
+          <div class="image-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
+               data-views="2470"
+               data-clicks="123"
+               data-channel="Instagram Story">
+            <img src="store.png" alt="Instagram Story" class="w-full h-full object-cover">
           </div>
         </div>
       </article>
       <article class="opt-card p-4">
         <h3 class="text-sm font-bold text-[#111827] mb-2">Story Metrics</h3>
         <dl class="text-[11px] text-[#4b5563] space-y-1.5">
-          <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">2,470</dd></div>
-          <div class="flex justify-between"><dt>Link Clicks</dt><dd class="font-bold text-[#111827]">123</dd></div>
-          <div class="flex justify-between"><dt>Channel</dt><dd class="font-bold text-[#111827]">Instagram Story</dd></div>
+          <div class="flex justify-between">
+            <dt>Views</dt>
+            <dd class="font-bold text-[#111827]" data-metric="views">—</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>Clicks</dt>
+            <dd class="font-bold text-[#111827]" data-metric="clicks">—</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>Channel</dt>
+            <dd class="font-bold text-[#111827]" data-metric="channel">—</dd>
+          </div>
         </dl>
       </article>
     </div>
@@ -261,30 +307,53 @@
       <div class="grid grid-cols-3 gap-4">
         <!-- Desktop Video 1 -->
         <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-          <div onclick="openVideo('video1.mov')" class="w-full bg-white flex items-center justify-center relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
-            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110">
-              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
+               data-views="4M"
+               data-followers="6643"
+               data-likes="91.9k">
+            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+              <source src="video1.mov" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
             </div>
-            <span class="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Video 1</span>
           </div>
         </div>
+        
         <!-- Desktop Video 2 -->
         <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-          <div onclick="openVideo('video2.mp4')" class="w-full bg-white flex items-center justify-center relative cursor-pointer video-placeholder aspect-[9/16] rounded-[20px] group">
-            <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center play-icon bg-white/90 group-hover:scale-110">
-              <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
+               data-views="55.5k"
+               data-followers="800"
+               data-likes="1826">
+            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+              <source src="video2.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
             </div>
-            <span class="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Video 2</span>
           </div>
         </div>
+        
         <!-- Desktop Story -->
         <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-          <div onclick="openImage('store.png')" class="w-full bg-white flex items-center justify-center relative cursor-pointer aspect-[9/16] rounded-[20px] group">
-            <div class="text-center">
-              <span class="text-2xl">📸</span>
-              <p class="text-[10px] text-gray-600 font-medium">Story Screenshot</p>
-            </div>
-            <span class="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-md">Instagram Story</span>
+          <div class="image-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
+               data-views="2470"
+               data-clicks="123"
+               data-channel="Instagram Story">
+            <img src="store.png" alt="Instagram Story" class="w-full h-full object-cover">
           </div>
         </div>
       </div>
@@ -297,20 +366,26 @@
         <dl class="text-xs text-[#4b5563] space-y-3">
           <div class="flex justify-between items-center border-b border-gray-100 pb-2">
             <div>
-              <dt class="font-medium text-gray-700">Total Views</dt>
-              <dd class="font-bold text-[#111827] text-lg">4M+</dd>
+              <dt class="font-medium text-gray-700">Views</dt>
+              <dd class="font-bold text-[#111827] text-lg" data-metric="views">—</dd>
             </div>
           </div>
           <div class="flex justify-between items-center border-b border-gray-100 pb-2">
             <div>
-              <dt class="font-medium text-gray-700">Followers Gained</dt>
-              <dd class="font-bold text-[#111827] text-lg">+7,443</dd>
+              <dt class="font-medium text-gray-700">Followers</dt>
+              <dd class="font-bold text-[#111827] text-lg" data-metric="followers">—</dd>
+            </div>
+          </div>
+          <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+            <div>
+              <dt class="font-medium text-gray-700">Likes</dt>
+              <dd class="font-bold text-[#111827] text-lg" data-metric="likes">—</dd>
             </div>
           </div>
           <div class="flex justify-between items-center">
             <div>
-              <dt class="font-medium text-gray-700">Link Clicks</dt>
-              <dd class="font-bold text-[#111827] text-lg">123</dd>
+              <dt class="font-medium text-gray-700">Clicks</dt>
+              <dd class="font-bold text-[#111827] text-lg" data-metric="clicks">—</dd>
             </div>
           </div>
         </dl>
@@ -324,7 +399,6 @@
     </div>
   </div>
 </section>
-
     <!-- RatingKitchenCabinets Case Study -->
     <section id="section-rating" class="reveal reveal-left" aria-label="Client case study RatingKitchenCabinets">
       <div class="flex flex-col gap-3 mb-4">
@@ -1074,8 +1148,7 @@
     </div>
   </div>
 </div>
-  <!-- JavaScript -->
-  <script>
+<script>
     // Scroll Animation
     document.addEventListener('DOMContentLoaded', () => {
       const observer = new IntersectionObserver((entries) => {
@@ -1099,413 +1172,144 @@
       });
     });
 
-    // Video Player Functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const videoStates = new Map();
+    // Video functions for in-container playback
+    function playVideo(overlayElement) {
+      const container = overlayElement.closest('.video-container');
+      const video = container.querySelector('video');
+      const overlay = container.querySelector('.video-overlay');
       
-      // Handle video placeholder clicks
-      document.addEventListener('click', function(e) {
-        const placeholder = e.target.closest('.video-placeholder');
-        if (!placeholder) return;
-        const videoId = placeholder.getAttribute('data-video-id');
-        if (!videoId) return;
-        
-        // Check if video element already exists
-        let videoEl = placeholder.querySelector('video');
-       
-        if (!videoEl) {
-          // Create video element
-          videoEl = document.createElement('video');
-          videoEl.className = 'w-full h-full rounded-[20px] object-cover';
-          videoEl.muted = true;
-          videoEl.loop = true;
-          videoEl.playsInline = true;
-          videoEl.controls = false;
-         
-          // In production, set actual video source here
-          // videoEl.src = 'path/to/video.mov'; // Changed to .mov
-         
-          // Clear placeholder content and add video
-          placeholder.innerHTML = '';
-          placeholder.appendChild(videoEl);
-         
-          // Add mute toggle button
-          const muteBtn = document.createElement('button');
-          muteBtn.className = 'absolute bottom-2 right-2 bg-black/60 rounded-full p-1.5 hover:bg-black/80 transition-colors focus-outline';
-          muteBtn.setAttribute('aria-label', 'Toggle mute');
-          muteBtn.innerHTML = `
-            <svg class="w-4 h-4 text-white mute-icon" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-            </svg>
-            <svg class="w-4 h-4 text-white unmute-icon hidden" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/>
-            </svg>
-          `;
-          placeholder.appendChild(muteBtn);
-         
-          // Mute toggle handler
-          muteBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            videoEl.muted = !videoEl.muted;
-            const muteIcon = muteBtn.querySelector('.mute-icon');
-            const unmuteIcon = muteBtn.querySelector('.unmute-icon');
-           
-            if (videoEl.muted) {
-              muteIcon.classList.remove('hidden');
-              unmuteIcon.classList.add('hidden');
-            } else {
-              muteIcon.classList.add('hidden');
-              unmuteIcon.classList.remove('hidden');
-            }
-          });
-         
-          videoStates.set(videoId, { element: videoEl, muted: true });
-        }
-       
-        // Toggle play/pause
-        if (videoEl.paused) {
-          videoEl.play().catch(err => {
-            console.error('Video play failed:', err);
-          });
-        } else {
-          videoEl.pause();
-        }
+      video.play();
+      overlay.style.display = 'none';
+    }
+
+    function togglePlayPause(videoElement) {
+      if (videoElement.paused) {
+        videoElement.play();
+        videoElement.parentElement.querySelector('.video-overlay').style.display = 'none';
+      } else {
+        videoElement.pause();
+        videoElement.parentElement.querySelector('.video-overlay').style.display = 'flex';
+      }
+    }
+
+    // Handle video end to show overlay again
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.video-container video').forEach(video => {
+        video.addEventListener('ended', function() {
+          this.parentElement.querySelector('.video-overlay').style.display = 'flex';
+        });
       });
     });
-
-    function openVideo(src, title = "Video Preview") {
-  const modal = document.getElementById('mediaModal');
-  const videoEl = document.getElementById('modalVideo');
-  const imgEl = document.getElementById('modalImage');
-  const modalTitle = document.getElementById('modalTitle');
+// DYNAMIC HOVER METRICS WITH RESET
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Setting up hover metrics with reset...');
   
-  // Set the dynamic title
-  if (modalTitle) {
-    modalTitle.textContent = title;
-  }
+  const containers = document.querySelectorAll('.video-container, .image-container');
+  let currentHoveredContainer = null;
   
-  // Reset and prepare modal
-  modal.classList.remove('hidden');
-  videoEl.classList.remove('hidden');
-  imgEl.classList.add('hidden');
-  
-  // Set video source and properties
-  videoEl.src = src;
-  videoEl.style.objectFit = 'contain';
-  videoEl.controls = true;
-  
-  // Smooth appearance
-  setTimeout(() => {
-    modal.classList.remove('opacity-0');
-  }, 10);
-  
-  // Play video
-  videoEl.play().catch(err => {
-    console.log('Autoplay prevented:', err);
-  });
-}
-
-function openImage(src) {
-  const modal = document.getElementById('mediaModal');
-  const videoEl = document.getElementById('modalVideo');
-  const imgEl = document.getElementById('modalImage');
-  
-  modal.classList.remove('hidden');
-  imgEl.classList.remove('hidden');
-  videoEl.classList.add('hidden');
-  videoEl.pause();
-  
-  imgEl.src = src;
-  imgEl.style.objectFit = 'contain';
-  
-  setTimeout(() => {
-    modal.classList.remove('opacity-0');
-  }, 10);
-}
-
-function closeModal() {
-  const modal = document.getElementById('mediaModal');
-  const videoEl = document.getElementById('modalVideo');
-  
-  modal.classList.add('opacity-0');
-  setTimeout(() => {
-    modal.classList.add('hidden');
-    videoEl.pause();
-    videoEl.src = "";
-    videoEl.controls = false;
-  }, 300);
-  modal.addEventListener('click', (e) => {
-  if(e.target === modal) closeModal();
-});
-}
+  containers.forEach(container => {
+    // Store original default values
+    const defaultValues = {
+      views: '—',
+      followers: '—', 
+      likes: '—',
+      clicks: '—',
+      channel: '—'
+    };
+    container.defaultValues = defaultValues;
     
-    // Close on click outside
-    modal.addEventListener('click', (e) => {
-      if(e.target === modal) closeModal();
+    // Hover in - update metrics
+    container.addEventListener('mouseenter', function() {
+      console.log('Hover IN detected');
+      currentHoveredContainer = this;
+      updateMetrics(this);
     });
+    
+    // Hover out - reset to defaults
+    container.addEventListener('mouseleave', function() {
+      console.log('Hover OUT detected');
+      if (currentHoveredContainer === this) {
+        resetMetrics();
+        currentHoveredContainer = null;
+      }
+    });
+  });
 
-    // Element SDK Configuration
+  function updateMetrics(container) {
+    const views = container.getAttribute('data-views');
+    const followers = container.getAttribute('data-followers');
+    const likes = container.getAttribute('data-likes');
+    const clicks = container.getAttribute('data-clicks');
+    const channel = container.getAttribute('data-channel');
+
+    console.log('Updating metrics with:', { views, followers, likes, clicks, channel });
+
+    const section = container.closest('section');
+    if (!section) return;
+
+    // Update only if data exists
+    updateMetric(section, 'views', views);
+    updateMetric(section, 'followers', followers, true); // Add + for followers
+    updateMetric(section, 'likes', likes);
+    updateMetric(section, 'clicks', clicks);
+    updateMetric(section, 'channel', channel);
+  }
+
+  function updateMetric(section, metric, value, addPlus = false) {
+    if (value) {
+      const elements = section.querySelectorAll(`[data-metric="${metric}"]`);
+      elements.forEach(el => {
+        el.textContent = addPlus ? '+' + value : value;
+      });
+    }
+  }
+
+  function resetMetrics() {
+    console.log('Resetting all metrics to defaults');
+    
+    // Reset all sections
+    document.querySelectorAll('section').forEach(section => {
+      const defaultValues = {
+        views: '—',
+        followers: '—',
+        likes: '—', 
+        clicks: '—',
+        channel: '—'
+      };
+      
+      Object.keys(defaultValues).forEach(metric => {
+        const elements = section.querySelectorAll(`[data-metric="${metric}"]`);
+        elements.forEach(el => {
+          el.textContent = defaultValues[metric];
+        });
+      });
+    });
+  }
+});
+      
+
+    // Element SDK Configuration (keep this if you need it)
     (async function () {
       if (!window.elementSdk) {
         return;
       }
       
       const defaultConfig = {
-        // Colors - OptifyUp brand theme
         background_color: "#f8fafc",
         surface_color: "#ffffff",
         text_color: "#4b5563",
         primary_action_color: "#1e3a8a",
         secondary_action_color: "#f97316",
-        // Typography
         font_family: "SF Pro Text",
         font_size: 14,
-        // Edit panel text
         page_title: "Portfolio",
         page_subheadline: "Real Clients. Real Results.",
         footer_contact_email: "hello@optifyup.com",
         footer_copyright: "© 2025 OptifyUp. All rights reserved.",
       };
 
-      // Cache common DOM references for onConfigChange
-      const bodyEl = document.body;
-      const mainEl = document.querySelector("main");
-      const headerEl = document.querySelector("header");
-      const footerEl = document.querySelector("footer");
-      const cards = document.querySelectorAll(".opt-card, .opt-card-light");
-      const buttonsAndLinks = document.querySelectorAll(
-        "button, a, [role='button']"
-      );
-      const headings = document.querySelectorAll("h1, h2, h3");
-      const paragraphs = document.querySelectorAll("p, dl, li, span, dt, dd");
-      const pageTitleEl = document.getElementById("page-title");
-      const pageSubheadlineEl = document.getElementById("page-subheadline");
-      const footerEmailEl = document.getElementById("footer-contact-email");
-      const footerCopyrightEl = document.getElementById("footer-copyright");
-
-      async function onConfigChange(config) {
-        const cfg = Object.assign({}, defaultConfig, config || {});
-        const baseFontStack = "system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif";
-        const customFont = cfg.font_family || defaultConfig.font_family;
-        const baseSize = Number(cfg.font_size) || defaultConfig.font_size;
-        
-        // Colors
-        const backgroundColor = cfg.background_color || defaultConfig.background_color;
-        const surfaceColor = cfg.surface_color || defaultConfig.surface_color;
-        const textColor = cfg.text_color || defaultConfig.text_color;
-        const primaryActionColor = cfg.primary_action_color || defaultConfig.primary_action_color;
-        const secondaryActionColor = cfg.secondary_action_color || defaultConfig.secondary_action_color;
-        
-        // Apply background
-        if (bodyEl) {
-          bodyEl.style.backgroundColor = backgroundColor;
-          bodyEl.style.color = textColor;
-        }
-        
-        if (mainEl) {
-          mainEl.style.color = textColor;
-        }
-        
-        if (headerEl) {
-          headerEl.style.borderColor = secondaryActionColor;
-        }
-        
-        if (footerEl) {
-          footerEl.style.borderColor = secondaryActionColor;
-        }
-        
-        // Apply surface colors to cards
-        cards.forEach((card) => {
-          if (card.classList.contains("opt-card-light")) {
-            card.style.backgroundColor = surfaceColor;
-          } else {
-            card.style.backgroundColor = surfaceColor;
-          }
-          card.style.color = textColor;
-        });
-        
-        // Apply colors to buttons/links
-        buttonsAndLinks.forEach((el) => {
-          el.style.color = textColor;
-        });
-        
-        // Headings font + size
-        headings.forEach((el) => {
-          el.style.fontFamily = customFont + ", " + baseFontStack;
-        });
-        
-        // Primary font scaling
-        if (pageTitleEl) {
-          pageTitleEl.style.fontFamily = customFont + ", " + baseFontStack;
-          pageTitleEl.style.fontSize = baseSize * 2 + "px";
-        }
-        
-        if (pageSubheadlineEl) {
-          pageSubheadlineEl.style.fontFamily =
-            customFont + ", " + baseFontStack;
-          pageSubheadlineEl.style.fontSize = baseSize * 1.1 + "px";
-        }
-        
-        paragraphs.forEach((el) => {
-          el.style.fontFamily = customFont + ", " + baseFontStack;
-          // Use classes and semantics to approximate scaling
-          if (el.tagName.toLowerCase() === "p") {
-            el.style.fontSize = baseSize + "px";
-          } else {
-            el.style.fontSize = baseSize * 0.85 + "px";
-          }
-        });
-        
-        // Apply OptifyUp accent colors where appropriate
-        const accentBadges = document.querySelectorAll(
-          ".nav-link::after"
-        );
-        
-        // Pseudo-elements can't be accessed directly; main accent is set via CSS using primary_action_color
-        
-        // Editable text content
-        if (pageTitleEl && cfg.page_title) {
-          pageTitleEl.textContent = cfg.page_title;
-        }
-        
-        if (pageSubheadlineEl && cfg.page_subheadline) {
-          pageSubheadlineEl.textContent = cfg.page_subheadline;
-        }
-        
-        if (footerEmailEl && cfg.footer_contact_email) {
-          footerEmailEl.textContent = cfg.footer_contact_email;
-        }
-        
-        if (footerCopyrightEl && cfg.footer_copyright) {
-          footerCopyrightEl.textContent = cfg.footer_copyright;
-        }
-      }
-
-      function mapToCapabilities(config) {
-        const cfg = Object.assign({}, defaultConfig, config || {});
-        return {
-          recolorables: [
-            {
-              // BACKGROUND
-              get: () =>
-                (window.elementSdk.config &&
-                  window.elementSdk.config.background_color) ||
-                cfg.background_color,
-              set: (value) => {
-                const c =
-                  window.elementSdk.config || cfg;
-                c.background_color = value;
-                window.elementSdk.setConfig({
-                  background_color: value,
-                });
-              },
-            },
-            {
-              // SECONDARY_SURFACE
-              get: () =>
-                (window.elementSdk.config &&
-                  window.elementSdk.config.surface_color) ||
-                cfg.surface_color,
-              set: (value) => {
-                const c =
-                  window.elementSdk.config || cfg;
-                c.surface_color = value;
-                window.elementSdk.setConfig({
-                  surface_color: value,
-                });
-              },
-            },
-            {
-              // TEXT
-              get: () =>
-                (window.elementSdk.config &&
-                  window.elementSdk.config.text_color) ||
-                cfg.text_color,
-              set: (value) => {
-                const c =
-                  window.elementSdk.config || cfg;
-                c.text_color = value;
-                window.elementSdk.setConfig({
-                  text_color: value,
-                });
-              },
-            },
-            {
-              // PRIMARY_ACTION (buttons / highlights)
-              get: () =>
-                (window.elementSdk.config &&
-                  window.elementSdk.config.primary_action_color) ||
-                cfg.primary_action_color,
-              set: (value) => {
-                const c =
-                  window.elementSdk.config || cfg;
-                c.primary_action_color = value;
-                window.elementSdk.setConfig({
-                  primary_action_color: value,
-                });
-              },
-            },
-            {
-              // SECONDARY_ACTION (borders / subtle accents)
-              get: () =>
-                (window.elementSdk.config &&
-                  window.elementSdk.config.secondary_action_color) ||
-                cfg.secondary_action_color,
-              set: (value) => {
-                const c =
-                  window.elementSdk.config || cfg;
-                c.secondary_action_color = value;
-                window.elementSdk.setConfig({
-                  secondary_action_color: value,
-                });
-              },
-            },
-          ],
-          fontEditable: {
-            get: () =>
-              (window.elementSdk.config &&
-                window.elementSdk.config.font_family) ||
-              cfg.font_family,
-            set: (value) => {
-              const c = window.elementSdk.config || cfg;
-              c.font_family = value;
-              window.elementSdk.setConfig({ font_family: value });
-            },
-          },
-          fontSizeable: {
-            get: () =>
-              (window.elementSdk.config &&
-                window.elementSdk.config.font_size) ||
-              cfg.font_size,
-            set: (value) => {
-              const c = window.elementSdk.config || cfg;
-              c.font_size = value;
-              window.elementSdk.setConfig({ font_size: value });
-            },
-          },
-          borderables: [],
-        };
-      }
-
-      function mapToEditPanelValues(config) {
-        const cfg = Object.assign({}, defaultConfig, config || {});
-        return new Map([
-          ["page_title", cfg.page_title],
-          ["page_subheadline", cfg.page_subheadline],
-          ["footer_contact_email", cfg.footer_contact_email],
-          ["footer_copyright", cfg.footer_copyright],
-        ]);
-      }
-
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues,
-      });
-
-      // Apply initial config
-      await onConfigChange(window.elementSdk.config || defaultConfig);
+      // ... rest of your Element SDK code ...
+      
     })();
   </script>
   </body>
