@@ -12,12 +12,12 @@
   <style>
     /* Base Styles */
     body {
-      box-sizing: border-box;
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-      color: #4b5563;
+        box-sizing: border-box;
+        margin: 0;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: #ffffff; /* Consistent White Background */
+        color: #4b5563;
+        overflow-x: hidden;
     }
 
     html,
@@ -131,43 +131,58 @@
 </head>
 <body class="h-full">
   <!-- Header -->
-  <header class="w-full sticky top-0 z-20 backdrop-blur-md bg-white/80 border-b border-slate-200" aria-label="OptifyUp navigation">
-    <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
-      <!-- Logo -->
-      <div class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#3b82f6] to-[#1e3a8a] shadow-lg">
-          <span class="font-semibold tracking-tight text-sm text-white" id="brand-mark" aria-label="OptifyUp logo">OU</span>
+<nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-12 md:h-20 flex justify-between items-center">
+        
+        <a href="index.html" class="flex items-center">
+            <img src="newlogo.png" alt="OptifyUp" class="h-6 md:h-10 w-auto"> 
+        </a>
+        
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="index.html#services" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Services</a>
+            <a href="index.html#results" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Results</a>
+            <a href="#" class="text-blue-900 font-bold transition-colors">Portfolio</a>
+            <a href="index.html#Calender" class="px-5 py-2 bg-blue-900 text-white rounded-full font-semibold hover:bg-blue-800 transition-all active:scale-95 text-sm">
+                Book Call
+            </a>
         </div>
-        <div class="leading-tight hidden sm:block">
-          <p class="text-xs uppercase tracking-[0.22em] text-[#f97316] font-semibold" id="brand-name">OptifyUp</p>
-          <p class="text-[11px] text-gray-600">Social Media Agency · Portfolio</p>
-        </div>
-      </div>
-      
-      <!-- Navigation -->
-      <nav class="hidden md:flex items-center gap-6 text-xs text-gray-700 font-medium">
-        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-header">Top</button>
-        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-laxdrip">Laxdripofficial</button>
-        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-rating">RatingKitchenCabinets</button>
-        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-battle">BattleLax</button>
-        <button class="nav-link focus-outline hover:text-[#1e3a8a]" data-scroll-target="#section-footer">Contact</button>
-      </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
     </div>
-  </header>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-12 shadow-xl">
+        <div class="flex flex-col p-4 space-y-4 text-center">
+            <a href="index.html#services" class="text-gray-600 hover:text-blue-900 font-medium py-2 border-b border-gray-50">Services</a>
+            <a href="index.html#results" class="text-gray-600 hover:text-blue-900 font-medium py-2 border-b border-gray-50">Results</a>
+            <a href="#" class="text-blue-900 font-bold py-2 border-b border-gray-50">Portfolio</a>
+            <a href="index.html#Calender" class="text-blue-900 font-bold py-2">Book a Free Call</a>
+        </div>
+    </div>
+</nav>
+
 
   <!-- Main Content -->
   <main class="max-w-6xl mx-auto px-5 pt-10 pb-16 flex flex-col gap-16 md:gap-20" aria-label="OptifyUp portfolio content">
-    <!-- Hero Section -->
-    <section id="section-header" class="flex flex-col items-center text-center gap-5 reveal reveal-zoom" aria-labelledby="page-title">
-      <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f97316] to-[#fb923c] px-4 py-1.5 shadow-lg">
+  <section id="section-header" class="hero-gradient pt-12 pb-12 px-1 text-center reveal active">
+    
+    <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-4 py-1.5 mb-6 shadow-lg">
         <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
         <span class="text-[11px] uppercase tracking-[0.24em] text-white font-semibold">OptifyUp Portfolio</span>
-      </div>
-      <div class="space-y-3">
-        <h1 id="page-title" class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">Portfolio</h1>
-        <p id="page-subheadline" class="text-sm md:text-base text-[#4b5563] max-w-xl mx-auto">Real Clients. Real Results.</p>
-      </div>
-    </section>
+    </div>
+
+    <h1 id="page-title" class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">
+        Portfolio
+    </h1>
+
+    <p id="page-subheadline" class="text-sm md:text-base text-[#4b5563] max-w-xl mx-auto mt-3">
+        Real Clients. Real Results.
+    </p>
+
+</section>
 <!-- Laxdripofficial Case Study -->
 <section id="section-laxdrip" class="reveal">
   <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
@@ -1245,108 +1260,267 @@ document.addEventListener('keydown', function(e) {
   }
 });
 </script>
-    <!-- SECTION 8 — ScaleWithConnor -->
-    <section id="section-scale" class="reveal reveal-right" aria-label="Client case study ScaleWithConnor advertisement videos">
-      <div class="flex flex-col gap-3 mb-4">
-        <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00]/80 font-medium">Ad Creative</p>
-        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">ScaleWithConnor</h2>
-      </div>
-      <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4" aria-label="ScaleWithConnor ad videos">
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" aria-hidden="true">
-          <div class="opt-video-frame p-2">
-            <div class="w-full rounded-[20px] bg-[#0D1720] flex items-center justify-center" style="aspect-ratio: 1/1;"></div>
-          </div>
-          <div class="opt-video-frame p-2">
-            <div class="w-full rounded-[20px] bg-[#0D1720] border border-dashed border-slate-600" style="aspect-ratio: 1/1;"></div>
-          </div>
-          <div class="opt-video-frame p-2">
-            <div class="w-full rounded-[20px] bg-[#0D1720] border border-dashed border-slate-600" style="aspect-ratio: 1/1;"></div>
-          </div>
-        </div>
-        <div class="mt-3 space-y-2">
-          <p class="text-xs text-slate-300">Paid ads produced for ScaleWithConnor.</p>
-          <p class="text-xs text-[#4b5563]">High-converting advertisement videos designed to drive engagement and conversions. Each video was crafted with strategic messaging and compelling visuals to maximize ROI across social media platforms.</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- SECTION 9 — ValueTechStrategies -->
-    <section id="section-vts" class="reveal reveal-up" aria-label="Client case study ValueTechStrategies">
-      <div class="flex flex-col gap-3 mb-4">
-        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Website Main Video</p>
-        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ValueTechStrategies (VTS)</h2>
-      </div>
-      <!-- Single YouTube video -->
-      <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4" aria-label="VTS YouTube video">
-        <div class="opt-video-frame p-3 w-full">
-          <div class="rounded-2xl bg-white flex items-center justify-center border border-dashed border-slate-300 w-full" style="aspect-ratio: 16/9;">
-            <div class="w-14 h-14 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
-              <div class="ml-0.5 w-5 h-5 border-l-[14px] border-l-[#3b82f6] border-y-[9px] border-y-transparent"></div>
+   <!-- ScaleWithConnor Case Study -->
+<section id="section-scale" class="reveal reveal-right">
+  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
+    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Ad Creative</p>
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ScaleWithConnor</h2>
+  </div>
+  
+  <!-- Mobile Layout -->
+  <div class="flex flex-col lg:hidden gap-6">
+    <!-- Video 1 -->
+    <article class="opt-card-light p-4">
+      <div class="opt-video-frame p-2">
+        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+            <source src="svideo1.mp4" type="video/mp4">
+          </video>
+          
+          <!-- Play Button Overlay -->
+          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
             </div>
           </div>
         </div>
-        <div class="mt-3 space-y-2">
-          <p class="text-xs text-[#4b5563]">Professional long-form content created for ValueTechStrategies' website. This video serves as the main hero content, explaining their services and value proposition with clear, engaging storytelling that converts visitors into clients.</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- SECTION 10 — ChamberlandCedar -->
-    <section id="section-chamber" class="reveal reveal-up" aria-label="Client case study ChamberlandCedar">
-      <div class="flex flex-col gap-3 mb-4">
-        <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00]/80 font-medium">Client Work</p>
-        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">ChamberlandCedar</h2>
       </div>
-      <div class="flex flex-col lg:grid lg:grid-cols-2 opt-grid-gap">
-        <!-- Video Section -->
-        <article class="opt-card-light p-5 md:p-6 flex flex-col gap-3" aria-label="ChamberlandCedar video">
-          <h3 class="text-sm font-bold text-[#111827]">Ad Video</h3>
-          <div class="opt-video-frame p-2">
-            <div class="w-full rounded-[20px] bg-[#0D1720] flex items-center justify-center" style="aspect-ratio: 1/1;">
-              <div class="w-10 h-10 rounded-full border-2 border-[#3b82f6] flex items-center justify-center">
-                <div class="ml-0.5 w-4 h-4 border-l-[10px] border-l-[#3b82f6] border-y-[7px] border-y-transparent"></div>
+    </article>
+    
+    <!-- Video 2 -->
+    <article class="opt-card-light p-4">
+      <div class="opt-video-frame p-2">
+        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+            <source src="svideo2.mp4" type="video/mp4">
+          </video>
+          
+          <!-- Play Button Overlay -->
+          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Video 3 -->
+    <article class="opt-card-light p-4">
+      <div class="opt-video-frame p-2">
+        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+            <source src="svideo3.mp4" type="video/mp4">
+          </video>
+          
+          <!-- Play Button Overlay -->
+          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  <!-- Desktop Layout -->
+  <div class="hidden lg:block">
+    <article class="opt-card-light p-6">
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Desktop Video 1 -->
+        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+              <source src="svideo1.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
               </div>
             </div>
           </div>
-          <div class="mt-2 space-y-2">
-            <p class="text-xs text-[#4b5563]">Cinematic advertisement showcasing the quality and craftsmanship of Chamberland Cedar products. This video highlights the natural beauty of cedar materials and positions the brand as a premium choice.</p>
+        </div>
+        
+        <!-- Desktop Video 2 -->
+        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+              <source src="svideo2.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
           </div>
-        </article>
-        <!-- Graphic Section -->
-        <article class="opt-card-light p-5 md:p-6 flex flex-col gap-3" aria-label="ChamberlandCedar graphic">
-          <h3 class="text-sm font-bold text-[#111827]">Graphic Ad</h3>
-          <div class="rounded-2xl sm:rounded-3xl bg-[#0D1720] border border-[#22445A]/70 shadow-[0_18px_40px_rgba(0,0,0,0.6)]" style="aspect-ratio: 1/1;" aria-hidden="true"></div>
-          <div class="mt-2 space-y-2">
-            <p class="text-xs text-[#4b5563]">Custom social media graphic designed to capture attention and showcase Chamberland Cedar's premium brand identity across Instagram and Facebook platforms.</p>
+        </div>
+        
+        <!-- Desktop Video 3 -->
+        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+              <source src="svideo3.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
           </div>
-        </article>
-      </div>
-    </section>
-  </main>
-  <!-- Footer -->
-  <footer id="section-footer" class="border-t border-slate-200 bg-white py-6" aria-label="OptifyUp footer">
-    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#3b82f6] to-[#1e3a8a] shadow-lg">
-          <span class="font-semibold text-xs text-white">OU</span>
-        </div>
-        <div class="text-xs text-gray-600">
-          <p class="font-bold text-[#111827] text-[13px]">OptifyUp · Social Media Agency</p>
-          <p id="footer-copyright" class="text-[11px] mt-0.5">© 2025 OptifyUp. All rights reserved.</p>
         </div>
       </div>
-      <div class="flex flex-col items-center md:items-end gap-2 text-xs">
-        <p class="text-gray-500 font-semibold">Connect</p>
-        <div class="flex gap-3 text-[#4b5563] font-medium">
-          <a href="#" class="focus-outline hover:text-[#1e3a8a] transition-colors" aria-label="OptifyUp Instagram (placeholder link)">Instagram</a>
-          <a href="#" class="focus-outline hover:text-[#1e3a8a] transition-colors" aria-label="OptifyUp LinkedIn (placeholder link)">LinkedIn</a>
-          <a href="#" class="focus-outline hover:text-[#1e3a8a] transition-colors" aria-label="OptifyUp TikTok (placeholder link)">TikTok</a>
+    </article>
+  </div>
+</section>
+
+ <!-- ValueTechStrategies -->
+<section id="section-vts" class="reveal reveal-up">
+  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
+    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Website Main Video</p>
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ValueTechStrategies (VTS)</h2>
+  </div>
+  
+  <!-- Single YouTube video -->
+  <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
+    <div class="opt-video-frame p-3 w-full">
+      <div class="video-container w-full bg-gray-900 rounded-2xl overflow-hidden relative aspect-video">
+        <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+          <source src="vtsvideo1.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Play Button Overlay -->
+        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+          <div class="play-button w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
         </div>
-        <p id="footer-contact-email" class="text-[11px] text-gray-600">hello@optifyup.com</p>
       </div>
     </div>
-  </footer>
+  </article>
+</section>
+<!-- ChamberlandCedar Case Study -->
+<section id="section-chamber" class="reveal reveal-up">
+  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
+    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Work</p>
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ChamberlandCedar</h2>
+  </div>
+  
+  <div class="flex flex-col lg:grid lg:grid-cols-2 opt-grid-gap">
+    <!-- Video Section -->
+    <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-[#111827]">Product Showcase Video</h3>
+          <p class="text-xs text-gray-500">Cedar craftsmanship highlight</p>
+        </div>
+      </div>
+      
+      <div class="opt-video-frame p-2">
+        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
+            <source src="ccvideo1.mp4" type="video/mp4">
+          </video>
+          
+          <!-- Play Button Overlay -->
+          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
+              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Graphic Section -->
+    <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-[#111827]">Brand Graphic</h3>
+          <p class="text-xs text-gray-500">Social media visual</p>
+        </div>
+      </div>
+      
+      <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+        <img src="ccpic.png" alt="Chamberland Cedar brand graphic" class="w-full h-auto object-contain">
+      </div>
+    
+    </article>
+  </div>
+</section>
+  </main>
+  <!-- Footer -->
+ <footer class="py-12 px-6 bg-white border-t border-gray-100 mt-12">
+    <div class="max-w-4xl mx-auto text-center reveal active">
+        
+        <div class="mb-4">
+            <img src="newlogo.png" alt="OptifyUp Logo" class="h-12 w-auto mx-auto">
+        </div>
 
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Contact Us</h3>
+
+        <div class="space-y-1 mb-8">
+            <p class="text-base md:text-lg text-gray-600 font-medium">Have questions? Email us at:</p>
+            <a href="mailto:optifyup@gmail.com" class="block text-xl md:text-2xl font-bold text-blue-900 hover:text-blue-700 transition-colors">
+                optifyup@gmail.com
+            </a>
+        </div>
+
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="https://www.instagram.com/optifyup/" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
+                <img src="instalogo.png" alt="Instagram" class="h-9 w-9">
+            </a>
+
+            <a href="https://www.facebook.com/" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
+                <img src="facebooklogo.png" alt="Facebook" class="h-9 w-9">
+            </a>
+
+            <a href="https://www.linkedin.com" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
+                <img src="linkdinlogo.png" alt="LinkedIn" class="h-9 w-9">
+            </a>
+
+            <a href="https://www.upwork.com" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
+                <img src="upworklogo.png" alt="Upwork" class="h-9 w-9">
+            </a>
+        </div>
+
+        <div class="text-sm text-gray-500 pt-6 border-t border-gray-100">
+            Copyright 2025 OptifyUp. All rights reserved.
+        </div>
+    </div>
+</footer>
 <!-- Sleek Media Modal -->
 <div id="mediaModal" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-all duration-300">
   <div class="relative bg-gray-900 rounded-2xl shadow-2xl max-w-2xl w-full mx-auto overflow-hidden border border-gray-700/50">
@@ -1366,17 +1540,14 @@ document.addEventListener('keydown', function(e) {
       <video id="modalVideo" class="w-full h-full object-contain hidden" controls></video>
       <img id="modalImage" class="w-full h-full object-contain hidden" alt="Modal content">
     </div>
-    
-    <!-- Footer with additional info -->
-    <div class="p-4 border-t border-gray-700/50 bg-gray-800/30">
-      <div class="flex items-center justify-between text-sm text-gray-300">
-        <span>CUTUP CART</span>
-        <span class="font-mono">Laxdrip</span>
-      </div>
-    </div>
-  </div>
-</div>
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-900 text-white p-3.5 rounded-full shadow-xl opacity-0 invisible transition-all duration-300 hover:bg-orange-600 hover:-translate-y-1 hover:shadow-2xl z-[100] focus:outline-none group">
+    <svg class="w-6 h-6 transform group-hover:-translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
+
 <script>
+    
     // Scroll Animation
     document.addEventListener('DOMContentLoaded', () => {
       const observer = new IntersectionObserver((entries) => {
