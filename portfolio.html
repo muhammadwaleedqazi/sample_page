@@ -9,182 +9,81 @@
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   
-  <style>
-    /* Base Styles */
-    body {
-        box-sizing: border-box;
-        margin: 0;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        background-color: #ffffff; /* Consistent White Background */
-        color: #4b5563;
-        overflow-x: hidden;
-    }
-
-    html,
-    body {
-      height: 100%;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Component Styles */
-    .opt-card {
-      border-radius: 24px;
-      background-color: #ffffff;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
-    }
-
-    .opt-card-light {
-      border-radius: 24px;
-      background-color: #f8fafc;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-    }
-
-    .opt-border-accent {
-      border-radius: 24px;
-      border: 1px solid rgba(30, 58, 138, 0.2);
-    }
-
-    .opt-glow {
-      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3), 0 20px 40px rgba(30, 58, 138, 0.15);
-    }
-
-    .opt-soft-glow-orange {
-      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.4),
-        0 20px 40px rgba(249, 115, 22, 0.2);
-    }
-
-    .opt-video-frame {
-      border-radius: 24px;
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    }
-
-    .opt-grid-gap {
-      gap: 1.75rem;
-    }
-
-    .focus-outline:focus-visible {
-      outline: 2px solid #3b82f6;
-      outline-offset: 3px;
-    }
-
-    .nav-link {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.25rem;
-      width: 0;
-      height: 2px;
-      background-color: #1e3a8a;
-      transition: width 200ms ease;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    section {
-      scroll-margin-top: 4rem;
-    }
-
-    /* Animation Styles */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 700ms ease, transform 700ms ease,
-        box-shadow 500ms ease;
-    }
-
-    .reveal-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-left {
-      transform: translateX(-40px);
-    }
-
-    .reveal-right {
-      transform: translateX(40px);
-    }
-
-    .reveal-zoom {
-      transform: scale(0.96);
-    }
-
-    .reveal-left.reveal-visible,
-    .reveal-right.reveal-visible,
-    .reveal-zoom.reveal-visible {
-      transform: translateX(0) scale(1);
-    }
-    /* --- LINK COLOR OVERRIDE --- */
-    /* Forces "View on..." links to use Theme Orange */
-    a.inline-flex.items-center.gap-2.font-bold {
-        color: #ea580c !important; /* Tailwind Orange-600 */
-        transition: all 0.2s ease;
-    }
-
-    a.inline-flex.items-center.gap-2.font-bold:hover {
-        color: #c2410c !important; /* Tailwind Orange-700 (Darker on hover) */
-        transform: translateY(-2px); /* Slight lift animation */
-    }
-
-    /* Ensures the SVG icon next to the text also turns orange */
-    a.inline-flex.items-center.gap-2.font-bold svg {
-        color: inherit !important;
-    }
-  </style>
-  
-  <style>@view-transition { navigation: auto; }</style>
+  <!-- Your Files -->
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body class="h-full">
   <!-- Header -->
-<nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 h-12 md:h-20 flex justify-between items-center">
+  <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-white/40 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center">
         
-        <a href="index.html" class="flex items-center">
-            <img src="newlogo.png" alt="OptifyUp" class="h-6 md:h-10 w-auto"> 
+        <a href="index.html" class="flex items-center group">
+            <img src="newlogo.png" alt="OptifyUp" class="h-7 md:h-8 w-auto transition-transform duration-300 group-hover:scale-105"> 
         </a>
         
-        <div class="hidden md:flex space-x-8 items-center">
-            <a href="index.html#services" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Services</a>
-            <a href="index.html#results" class="text-gray-600 hover:text-blue-900 font-medium transition-colors">Results</a>
-            <a href="#" class="text-blue-900 font-bold transition-colors">Portfolio</a>
-            <a href="index.html#Calender" class="px-5 py-2 bg-blue-900 text-white rounded-full font-semibold hover:bg-blue-800 transition-all active:scale-95 text-sm">
+        <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+            
+            <a href="index.html" class="relative text-xs lg:text-sm font-medium tracking-wide text-gray-500 hover:text-blue-900 transition-colors duration-200 group">
+                Home
+                <span class="absolute -bottom-2 left-1/2 w-1 h-1 bg-blue-200 rounded-full transform -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200"></span>
+            </a>
+
+            <a href="index.html#services" class="relative text-xs lg:text-sm font-medium tracking-wide text-gray-500 hover:text-blue-900 transition-colors duration-200 group">
+                Services
+                <span class="absolute -bottom-2 left-1/2 w-1 h-1 bg-blue-200 rounded-full transform -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200"></span>
+            </a>
+
+            <a href="index.html#results" class="relative text-xs lg:text-sm font-medium tracking-wide text-gray-500 hover:text-blue-900 transition-colors duration-200 group">
+                Results
+                <span class="absolute -bottom-2 left-1/2 w-1 h-1 bg-blue-200 rounded-full transform -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200"></span>
+            </a>
+
+            <a href="#" class="relative text-xs lg:text-sm font-bold tracking-wide text-blue-900">
+                Portfolio
+                <span class="absolute -bottom-2 left-1/2 w-1 h-1 bg-orange-500 rounded-full transform -translate-x-1/2 shadow-sm"></span>
+            </a>
+
+            <a href="index.html#Calender" class="px-5 py-2 bg-blue-900 text-white rounded-full font-bold text-xs lg:text-sm shadow-lg shadow-blue-900/20 hover:bg-orange-600 hover:shadow-orange-500/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 ml-2">
                 Book Call
             </a>
         </div>
 
-        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-900 focus:outline-none">
+        <button id="mobile-menu-btn" class="md:hidden text-gray-500 hover:text-blue-900 focus:outline-none p-1.5 rounded-lg hover:bg-white/50">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-12 shadow-xl">
-        <div class="flex flex-col p-4 space-y-4 text-center">
-            <a href="index.html#services" class="text-gray-600 hover:text-blue-900 font-medium py-2 border-b border-gray-50">Services</a>
-            <a href="index.html#results" class="text-gray-600 hover:text-blue-900 font-medium py-2 border-b border-gray-50">Results</a>
-            <a href="#" class="text-blue-900 font-bold py-2 border-b border-gray-50">Portfolio</a>
-            <a href="index.html#Calender" class="text-blue-900 font-bold py-2">Book a Free Call</a>
+    <div id="mobile-menu-container" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-gray-100 absolute w-full left-0 top-14 shadow-2xl z-40">
+        <div class="flex flex-col p-6 space-y-4 text-center">
+            
+            <a href="index.html" class="text-gray-500 hover:text-blue-900 font-medium text-sm transition-colors">Home</a>
+            <a href="index.html#services" class="text-gray-500 hover:text-blue-900 font-medium text-sm transition-colors">Services</a>
+            <a href="index.html#results" class="text-gray-500 hover:text-blue-900 font-medium text-sm transition-colors">Results</a>
+            
+            <div>
+                <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-900 font-bold text-sm border border-blue-100">
+                    Portfolio
+                </span>
+            </div>
+            
+            <div class="w-12 h-px bg-gray-100 mx-auto my-2"></div>
+            
+            <a href="index.html#Calender" class="inline-block px-8 py-2.5 bg-blue-900 text-white rounded-full font-bold text-sm shadow-md hover:bg-orange-600 transition-colors">
+                Book a Free Call
+            </a>
         </div>
     </div>
-</nav>
-
+  </nav>
 
   <!-- Main Content -->
   <main class="max-w-6xl mx-auto px-5 pt-10 pb-16 flex flex-col gap-16 md:gap-20" aria-label="OptifyUp portfolio content">
-  <section id="section-header" class="hero-gradient pt-12 pb-12 px-1 text-center reveal active">
     
+    <!-- Section 1: Header -->
+    <!-- Section 1: Header -->
+<section id="section-header" class="pt-12 pb-12 px-1 text-center reveal active">
     <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-4 py-1.5 mb-6 shadow-lg">
         <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
         <span class="text-[11px] uppercase tracking-[0.24em] text-white font-semibold">OptifyUp Portfolio</span>
@@ -197,977 +96,637 @@
     <p id="page-subheadline" class="text-sm md:text-base text-[#4b5563] max-w-xl mx-auto mt-3">
         Real Clients. Real Results.
     </p>
-
 </section>
-<!-- Laxdripofficial Case Study -->
-<section id="section-laxdrip" class="reveal">
-  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
+
+    <!-- Section 2: Laxdripofficial Case Study -->
+   <section id="section-laxdrip" class="reveal">
+    <div class="flex flex-col gap-2 mb-10 pb-4 border-b border-gray-100 text-center lg:text-left">
     <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">Laxdripofficial</h2>
-  </div>
-  
-  <!-- Mobile Layout -->
-  <div class="flex flex-col lg:hidden gap-4">
-    <!-- Video 1 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="video"
-               data-views="4M"
-               data-followers="6643"
-               data-likes="91.9k">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="video1.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- VIEW ON INSTAGRAM LINK - Video 1 -->
-        <div class="text-center mt-3">
-          <a href="https://www.instagram.com/reel/C5317KXtUKV/?igsh=cnE3bGZ5aWo1NTZz" target="_blank" 
-             class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-            <span>View on Instagram</span>
-          </a>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="default-content min-h-[60px]">
-          <!-- Empty but takes same space -->
-        </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Video 2 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="video"
-               data-views="55.5k"
-               data-followers="800"
-               data-likes="1826">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="video2.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- VIEW ON INSTAGRAM LINK - Video 2 -->
-        <div class="text-center mt-3">
-          <a href="https://www.instagram.com/reel/DHrAhk5o2ka/?igsh=MTk2dDlvdnR5MGZqbg==" target="_blank" 
-             class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-            <span>View on Instagram</span>
-          </a>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Story -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="image-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="story"
-               data-views="2470"
-               data-clicks="123"
-               data-channel="Instagram Story">
-            <img src="store.png" alt="Instagram Story" class="w-full h-full object-cover">
-          </div>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="default-content">
-          <!-- Empty - no min-height needed -->
-        </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Strategy -->
-    <article class="opt-card p-4">
-      <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
-      <p class="text-[11px] text-[#4b5563] leading-relaxed">
-        Our goal was to grow a real lacrosse audience and send more people to the Laxdrip website for equipment reviews. To do this, we posted viral lacrosse highlights with our own clean style, added helpful top text, and wrote short educational captions. We also used stories and review videos to push viewers to the website. This helped us grow followers fast and increase website clicks and brand awareness.
-      </p>
-    </article>
-  </div>
-  
-  <!-- Desktop Layout -->
-  <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
-    <article class="opt-card-light p-6 flex flex-col gap-4">
-      <div class="grid grid-cols-3 gap-4">
-        <!-- Desktop Video 1 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-                 data-type="video"
-                 data-views="4M"
-                 data-followers="6643"
-                 data-likes="91.9k">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="video1.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- VIEW ON INSTAGRAM LINK - Desktop Video 1 -->
-          <div class="text-center">
-            <a href="https://www.instagram.com/reel/C5317KXtUKV/?igsh=cnE3bGZ5aWo1NTZz" target="_blank" 
-               class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-              <span>View on Instagram</span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Desktop Video 2 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-                 data-type="video"
-                 data-views="55.5k"
-                 data-followers="800"
-                 data-likes="1826">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="video2.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- VIEW ON INSTAGRAM LINK - Desktop Video 2 -->
-          <div class="text-center">
-            <a href="https://www.instagram.com/reel/DHrAhk5o2ka/?igsh=MTk2dDlvdnR5MGZqbg==" target="_blank" 
-               class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-              <span>View on Instagram</span>
-            </a>
-          </div>
-        </div>
-        
-       <!-- Desktop Story -->
-  <div class="flex flex-col gap-3">
-    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-      <div class="image-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-           data-type="story"
-           data-views="2470"
-           data-clicks="123"
-           data-channel="Instagram Story">
-        <img src="store.png" alt="Instagram Story" class="w-full h-full object-cover">
-      </div>
-    </div>
-    <!-- No Instagram link for Story -->
-  </div>
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">Laxdripofficial</h2>
 </div>
-    </article>
 
-    <!-- Desktop Metrics & Strategy -->
-    <div class="flex flex-col gap-4">
-      <article class="opt-card p-5 metrics-placeholder min-h-[250px]">
-        <h3 class="text-sm font-bold text-[#111827] uppercase tracking-wide mb-3">Growth Metrics</h3>
-        <div class="default-content">
-          <!-- Empty - no min-height needed -->
-        </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-      <article class="opt-card p-5 bg-blue-50 border border-blue-100">
-        <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
-        <p class="text-xs text-[#4b5563] leading-relaxed">
-          Our goal was to grow a real lacrosse audience and send more people to the Laxdrip website for equipment reviews. To do this, we posted viral lacrosse highlights with our own clean style, added helpful top text, and wrote short educational captions. We also used stories and review videos to push viewers to the website. This helped us grow followers fast and increase website clicks and brand awareness.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
-   <!-- RatingKitchenCabinets Case Study -->
-<section id="section-rating" class="reveal reveal-left">
-  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">RatingKitchenCabinets</h2>
-  </div>
-  
-  <!-- Mobile Layout -->
-  <div class="flex flex-col lg:hidden gap-4">
-    <!-- Video 1 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="video"
-               data-views="7.1M"
-               data-followers="4897"
-               data-likes="299.4k">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="rvideo1.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- VIEW ON TIKTOK LINK - Video 1 -->
-        <div class="text-center mt-3">
-          <a href="https://www.tiktok.com/@ratingkitchencabinets/video/7538828154367151368?is_from_webapp=1&sender_device=pc" target="_blank" 
-             class="inline-flex items-center gap-2 text-[#000000] font-bold text-sm hover:text-[#333333] transition-colors">
-            <span>View on TikTok</span>
-          </a>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="default-content min-h-[60px]">
-          <!-- Empty but takes same space -->
-        </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Video 2 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="video"
-               data-views="3.2M"
-               data-followers="993"
-               data-likes="98k">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="rvideo2.mov" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- VIEW ON INSTAGRAM LINK - Video 2 -->
-        <div class="text-center mt-3">
-          <a href="https://www.instagram.com/reel/DMkxKzvi8L5/?igsh=bDlzOG55ejdreXk2" target="_blank" 
-             class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-            <span>View on Instagram</span>
-          </a>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Video 3 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="video"
-               data-views="5.4M"
-               data-followers="1.9k"
-               data-likes="118k">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="rvideo3.mov" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- VIEW ON YOUTUBE LINK - Video 3 -->
-        <div class="text-center mt-3">
-          <a href="https://youtube.com/shorts/viiyZgS9cmE?si=j8iohh4Rv7sCrqa6" target="_blank" 
-             class="inline-flex items-center gap-2 text-[#FF0000] font-bold text-sm hover:text-[#CC0000] transition-colors">
-            <span>View on YouTube</span>
-          </a>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="default-content">
-          <!-- Empty - no min-height needed -->
-        </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Strategy -->
-    <article class="opt-card p-4">
-      <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
-      <p class="text-[11px] text-[#4b5563] leading-relaxed">
-        Our goal was to grow a real home-improvement audience for RatingKitchenCabinets and drive traffic to the client's cabinet reviews and Amazon products. Since the client didn't have time to make videos, we reposted trending home improvement and cabinet clips, adding our own style, top text, and captions.
-        We focused on Facebook, quickly growing to 45k followers and millions of views. Across all channels, 70% of our audience is from the USA.
-      </p>
-    </article>
-  </div>
-  
-  <!-- Desktop Layout -->
-  <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
-    <article class="opt-card-light p-6 flex flex-col gap-4">
-      <div class="grid grid-cols-3 gap-4">
-        <!-- Desktop Video 1 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-                 data-type="video"
-                 data-views="7.1M"
-                 data-followers="4897"
-                 data-likes="299.4k">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="rvideo1.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- VIEW ON TIKTOK LINK - Desktop Video 1 -->
-          <div class="text-center">
-            <a href="https://www.tiktok.com/@ratingkitchencabinets/video/7538828154367151368?is_from_webapp=1&sender_device=pc" target="_blank" 
-               class="inline-flex items-center gap-2 text-[#000000] font-bold text-sm hover:text-[#333333] transition-colors">
-              <span>View on TikTok</span>
-            </a>
-          </div>
-        </div>
+    <div class="flex flex-col lg:hidden gap-8">
         
-        <!-- Desktop Video 2 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-                 data-type="video"
-                 data-views="3.2M"
-                 data-followers="993"
-                 data-likes="98k">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="rvideo2.mov" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="video1.mp4" type="video/mp4"></video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <!-- VIEW ON INSTAGRAM LINK - Desktop Video 2 -->
-          <div class="text-center">
-            <a href="https://www.instagram.com/reel/DMkxKzvi8L5/?igsh=bDlzOG55ejdreXk2" target="_blank" 
-               class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-              <span>View on Instagram</span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Desktop Video 3 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-                 data-type="video"
-                 data-views="5.4M"
-                 data-followers="1.9k"
-                 data-likes="118k">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="rvideo3.mov" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">4M</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+6.6k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">91.9k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
                 </div>
-              </div>
             </div>
-          </div>
-          <!-- VIEW ON YOUTUBE LINK - Desktop Video 3 -->
-          <div class="text-center">
-            <a href="https://youtube.com/shorts/viiyZgS9cmE?si=j8iohh4Rv7sCrqa6" target="_blank" 
-               class="inline-flex items-center gap-2 text-[#FF0000] font-bold text-sm hover:text-[#CC0000] transition-colors">
-              <span>View on YouTube</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </article>
+            <div class="text-center"><a href="https://www.instagram.com/reel/C5317KXtUKV/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
 
-    <!-- Desktop Metrics & Strategy -->
-    <div class="flex flex-col gap-4">
-      <article class="opt-card p-5 metrics-placeholder min-h-[250px]">
-        <h3 class="text-sm font-bold text-[#111827] uppercase tracking-wide mb-3">Growth Metrics</h3>
-        <div class="default-content">
-          <!-- Empty - no min-height needed -->
-        </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-      <article class="opt-card p-5 bg-blue-50 border border-blue-100">
-        <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
-        <p class="text-xs text-[#4b5563] leading-relaxed">
-          Our goal was to grow a real home-improvement audience for RatingKitchenCabinets and drive traffic to the client's cabinet reviews and Amazon products. Since the client didn't have time to make videos, we reposted trending home improvement and cabinet clips, adding our own style, top text, and captions.
-          We focused on Facebook, quickly growing to 45k followers and millions of views. Across all channels, 70% of our audience is from the USA.
-        </p>
-      </article>
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="video2.mp4" type="video/mp4"></video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">55.5k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+800</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">1,826</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
+                </div>
+            </div>
+            <div class="text-center"><a href="https://www.instagram.com/reel/DHrAhk5o2ka/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="image-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <img src="store.png" alt="Instagram Story" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Story Performance</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">2,470</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">123</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Clicks</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900">IG</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Channel</div></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="glow-card p-6 bg-blue-50/50 border border-blue-100">
+            <h3 class="text-lg font-bold text-[#1e3a8a] mb-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#1e3a8a]"></span> Strategy</h3>
+            <p class="text-sm text-[#4b5563] leading-relaxed">Our goal was to grow a real lacrosse audience and send more people to the Laxdrip website. We posted viral highlights with clean edits, helpful top text, and short educational captions.</p>
+        </article>
     </div>
-  </div>
+
+    <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
+        <article class="glow-card p-6 flex flex-col gap-4">
+            <div class="grid grid-cols-3 gap-4">
+                
+                <div class="flex flex-col gap-3 reveal">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="4M" data-followers="6.6k" data-likes="91.9k">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="video1.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                                <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="https://www.instagram.com/reel/C5317KXtUKV/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram</a></div>
+                </div>
+
+                <div class="flex flex-col gap-3 reveal delay-100">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="55.5k" data-followers="800" data-likes="1826">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="video2.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                                <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="https://www.instagram.com/reel/DHrAhk5o2ka/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram</a></div>
+                </div>
+
+                <div class="flex flex-col gap-3 reveal delay-200">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="image-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="story" data-views="2470" data-clicks="123" data-channel="Instagram Story">
+                            <img src="store.png" alt="Instagram Story" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+        
+        <div class="flex flex-col gap-4 reveal delay-300">
+            <article class="glow-card p-8 metrics-placeholder h-[340px] flex flex-col justify-between relative">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mt-2">Growth Metrics</h4>
+
+                <div class="metrics-data w-full">
+                    <dl class="space-y-5 w-full default-view transition-opacity duration-300">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Views</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Followers</dt>
+                            <dd class="text-2xl font-extrabold text-orange-100">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <dt class="text-sm font-medium text-gray-500">Likes</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                    </dl>
+                </div>
+
+            </article>
+
+            <article class="glow-card p-6 bg-blue-50/50 border-blue-100">
+                <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
+                <p class="text-xs text-[#4b5563] leading-relaxed">
+                    Our goal was to grow a real lacrosse audience and send more people to the Laxdrip website. We posted viral highlights with clean edits.
+                </p>
+            </article>
+        </div>
+    </div>
 </section>
 
-   <!-- BattleLax Case Study -->
-<section id="section-battle" class="reveal reveal-right">
-  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">BattleLax</h2>
-  </div>
-  
-  <!-- Mobile Layout -->
-  <div class="flex flex-col lg:hidden gap-4">
-    <!-- Video 1 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="bvideo1.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+    <!-- Continue with Sections 3-10 following the same pattern -->
+    <!-- Section 3: RatingKitchenCabinets -->
+   <section id="section-rating" class="reveal reveal-left">
+    <div class="flex flex-col gap-2 mb-10 pb-4 border-b border-gray-100 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">RatingKitchenCabinets</h2>
     </div>
-    
-    <!-- Video 2 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="bvideo2.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-    
-    <!-- Strategy -->
-    <article class="opt-card p-4">
-      <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
-      <p class="text-[11px] text-[#4b5563] leading-relaxed">
-        This is also our lacrosse project, but this time it's a lacrosse equipment brand. Our goal was to grow a real lacrosse audience for BattleLax and drive traffic to their website to sell lacrosse products. Since the client didn't have original videos, we reposted product clips from manufacturers and added some lacrosse highlight videos.
-        We also created custom graphic ads and video ads for running on Google and Facebook to increase reach and bring more visitors to the BattleLax Shopify store.
-      </p>
-    </article>
-  </div>
-  
-  <!-- Desktop Layout -->
-  <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
-    <article class="opt-card-light p-6 flex flex-col gap-4">
-      <div class="grid grid-cols-2 gap-4">
-        <!-- Desktop Video 1 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="bvideo1.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Desktop Video 2 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="bvideo2.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
 
-    <!-- Desktop Strategy Only (No Metrics) -->
-    <div class="flex flex-col gap-4">
-      <article class="opt-card p-5 bg-blue-50 border border-blue-100">
-        <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
-        <p class="text-xs text-[#4b5563] leading-relaxed">
-          This is also our lacrosse project, but this time it's a lacrosse equipment brand. Our goal was to grow a real lacrosse audience for BattleLax and drive traffic to their website to sell lacrosse products. Since the client didn't have original videos, we reposted product clips from manufacturers and added some lacrosse highlight videos.
-          We also created custom graphic ads and video ads for running on Google and Facebook to increase reach and bring more visitors to the BattleLax Shopify store.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
-    
-    <!-- Isid.insulation.drywall Case Study -->
-<section id="section-isid" class="reveal reveal-up">
-  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">Isid.insulation.drywall</h2>
-  </div>
-  
-  <!-- Mobile Layout -->
-  <div class="flex flex-col lg:hidden gap-4">
-    <!-- Video 1 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="video"
-               data-views="346k"
-               data-followers="203"
-               data-likes="1942">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="ivideo1.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- VIEW ON INSTAGRAM LINK - Video 1 -->
-        <div class="text-center mt-3">
-          <a href="https://www.instagram.com/reel/DFV5xEHCYCE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
-             class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-            <span>View on Instagram</span>
-          </a>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="default-content min-h-[60px]">
-          <!-- Empty but takes same space -->
-        </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Video 2 -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-               data-type="video"
-               data-views="262k"
-               data-followers="147"
-               data-likes="1155">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="ivideo2.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- VIEW ON INSTAGRAM LINK - Video 2 -->
-        <div class="text-center mt-3">
-          <a href="https://www.instagram.com/reel/DHBwgmct3KJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
-             class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-            <span>View on Instagram</span>
-          </a>
-        </div>
-      </article>
-      <article class="opt-card p-4 metrics-placeholder min-h-[120px]">
-        <h3 class="text-sm font-bold text-[#111827] mb-3">Growth Metrics</h3>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-    </div>
-    
-    <!-- Video 3 (No Metrics) -->
-    <div class="flex flex-col gap-3">
-      <article class="opt-card-light p-4">
-        <div class="opt-video-frame p-2">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="ivideo3.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-      <!-- No metrics article for Video 3 -->
-    </div>
-    
-    <!-- Strategy -->
-    <article class="opt-card p-4">
-      <h3 class="text-sm font-bold text-[#111827]">Strategy</h3>
-      <p class="text-[11px] text-[#4b5563] leading-relaxed">
-        This is our local construction project based in Denver, Colorado. The brand offers drywall, insulation, and painting services, and our goal was to build local awareness in Colorado. The client recorded some on-site videos, but we mostly created custom AI-voice educational content to target the right local audience.
-        Most of our views and engagement came from Facebook, and we also used Instagram to help the client close several local service deals.
-      </p>
-    </article>
-  </div>
-  
-  <!-- Desktop Layout -->
-  <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
-    <article class="opt-card-light p-6 flex flex-col gap-4">
-      <div class="grid grid-cols-3 gap-4">
-        <!-- Desktop Video 1 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-                 data-type="video"
-                 data-views="346k"
-                 data-followers="203"
-                 data-likes="1942">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="ivideo1.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
+    <div class="flex flex-col lg:hidden gap-8">
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="rvideo1.mp4" type="video/mp4"></video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <!-- VIEW ON INSTAGRAM LINK - Desktop Video 1 -->
-          <div class="text-center">
-            <a href="https://www.instagram.com/reel/DFV5xEHCYCE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
-               class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-              <span>View on Instagram</span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Desktop Video 2 -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]"
-                 data-type="video"
-                 data-views="262k"
-                 data-followers="147"
-                 data-likes="1155">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="ivideo2.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">7.1M</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+4.8k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">299k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
                 </div>
-              </div>
             </div>
-          </div>
-          <!-- VIEW ON INSTAGRAM LINK - Desktop Video 2 -->
-          <div class="text-center">
-            <a href="https://www.instagram.com/reel/DHBwgmct3KJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" 
-               class="inline-flex items-center gap-2 text-[#E4405F] font-bold text-sm hover:text-[#C13584] transition-colors">
-              <span>View on Instagram</span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Desktop Video 3 (No Metrics) -->
-        <div class="flex flex-col gap-3">
-          <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-            <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-              <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-                <source src="ivideo3.mp4" type="video/mp4">
-              </video>
-              
-              <!-- Play Button Overlay -->
-              <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-                <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                  <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+            <div class="text-center"><a href="https://www.tiktok.com/@ratingkitchencabinets/video/7538828154367151368" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on TikTok <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
 
-    <!-- Desktop Metrics & Strategy -->
-    <div class="flex flex-col gap-4">
-      <article class="opt-card p-5 metrics-placeholder min-h-[250px]">
-        <h3 class="text-sm font-bold text-[#111827] uppercase tracking-wide mb-3">Growth Metrics</h3>
-        <div class="default-content">
-          <!-- Empty - no min-height needed -->
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="rvideo2.mov" type="video/mp4"></video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">3.2M</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+993</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">98k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
+                </div>
+            </div>
+            <div class="text-center"><a href="https://www.instagram.com/reel/DMkxKzvi8L5/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="rvideo3.mov" type="video/mp4"></video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">5.4M</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+1.9k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">118k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
+                </div>
+            </div>
+            <div class="text-center"><a href="https://youtube.com/shorts/viiyZgS9cmE" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on YouTube <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
+
+        <article class="glow-card p-6 bg-blue-50/50 border border-blue-100">
+            <h3 class="text-lg font-bold text-[#1e3a8a] mb-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#1e3a8a]"></span> Strategy</h3>
+            <p class="text-sm text-[#4b5563] leading-relaxed">Our goal was to grow a real home-improvement audience for RatingKitchenCabinets and drive traffic to the client's cabinet reviews. Since the client didn't have time to make videos, we reposted trending home improvement and cabinet clips.</p>
+        </article>
+    </div>
+
+    <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
+        <article class="glow-card p-6 flex flex-col gap-4">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="7.1M" data-followers="4.8k" data-likes="299k">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="rvideo1.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="https://www.tiktok.com/@ratingkitchencabinets/video/7538828154367151368" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on TikTok</a></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="3.2M" data-followers="993" data-likes="98k">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="rvideo2.mov" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="https://www.instagram.com/reel/DMkxKzvi8L5/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram</a></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="5.4M" data-followers="1.9k" data-likes="118k">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="rvideo3.mov" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="https://youtube.com/shorts/viiyZgS9cmE" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on YouTube</a></div>
+                </div>
+            </div>
+        </article>
+
+        <div class="flex flex-col gap-4">
+            <article class="glow-card p-8 metrics-placeholder h-[340px] flex flex-col justify-between relative">
+                
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mt-2">Growth Metrics</h4>
+
+                <div class="metrics-data w-full">
+                    <dl class="space-y-5 w-full default-view transition-opacity duration-300">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Views</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Followers</dt>
+                            <dd class="text-2xl font-extrabold text-orange-100">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <dt class="text-sm font-medium text-gray-500">Likes</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                    </dl>
+                </div>
+            </article>
+            <article class="glow-card p-6 bg-blue-50/50 border-blue-100">
+                <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
+                <p class="text-xs text-[#4b5563] leading-relaxed">Our goal was to grow a real home-improvement audience for RatingKitchenCabinets. Since the client didn't have time to make videos, we reposted trending clips.</p>
+            </article>
         </div>
-        <div class="metrics-content hidden">
-          <!-- Metrics will be dynamically inserted here -->
-        </div>
-      </article>
-      <article class="opt-card p-5 bg-blue-50 border border-blue-100">
-        <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
-        <p class="text-xs text-[#4b5563] leading-relaxed">
-          This is our local construction project based in Denver, Colorado. The brand offers drywall, insulation, and painting services, and our goal was to build local awareness in Colorado. The client recorded some on-site videos, but we mostly created custom AI-voice educational content to target the right local audience.
-          Most of our views and engagement came from Facebook, and we also used Instagram to help the client close several local service deals.
-        </p>
-      </article>
     </div>
-  </div>
-</section>
-   <!-- One-Time Graphic Project #1 -->
-<section id="section-graphics-1" class="reveal reveal-zoom" aria-label="One-time graphic project 1">
-  <div class="flex flex-col gap-3 mb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00]/80 font-medium">Graphics Gallery</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">One-Time Graphic Project #1</h2>
-  </div>
-  <article class="opt-card-light p-4 sm:p-5 md:p-6" aria-label="Graphic posts grid">
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
-      <!-- Graphic 1 -->
-      <div class="rounded-2xl sm:rounded-3xl bg-white border border-gray-200 overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.1)]" style="aspect-ratio: 4/5;">
-        <img src="g1.png" alt="Graphic design 1" class="w-full h-full object-cover">
-      </div>
-      
-      <!-- Graphic 2 -->
-      <div class="rounded-2xl sm:rounded-3xl bg-white border border-gray-200 overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.1)]" style="aspect-ratio: 4/5;">
-        <img src="g2.png" alt="Graphic design 2" class="w-full h-full object-cover">
-      </div>
-      
-      <!-- Graphic 3 -->
-      <div class="rounded-2xl sm:rounded-3xl bg-white border border-gray-200 overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.1)] col-span-2 sm:col-span-1" style="aspect-ratio: 4/5;">
-        <img src="g3.png" alt="Graphic design 3" class="w-full h-full object-cover">
-      </div>
-    </div>
-    <div class="mt-4 space-y-2">
-      <p class="text-xs text-[#4b5563]">This was a one-time project where we made 30 graphic posts for a personal brand. We first chose the branding colors and font. Then we researched trending posts in the niche and recreated them in the client's style. We also made all icons using the same branding.</p>
-    </div>
-  </article>
 </section>
 
- <!-- One-Time Graphic Project #2 -->
-<section id="section-graphics-2" class="reveal reveal-left" aria-label="Carousel graphics project">
-  <div class="flex flex-col gap-3 mb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#F28B00] font-bold">Carousel Graphics</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">One-Time Graphic Project #2</h2>
-  </div>
-  
-  <article class="opt-card-light p-6" aria-label="Carousel graphics gallery">
-    <div class="grid lg:grid-cols-2 gap-8">
-      <!-- Carousel Post 1 -->
-      <div class="flex flex-col gap-4">
-        <div class="text-center mb-2">
-          <h3 class="text-sm font-bold text-[#111827] mb-1">Sleep & Wellness Series</h3>
-          <p class="text-xs text-gray-500">8-slide educational carousel</p>
-        </div>
-        
-        <div class="relative group cursor-pointer" onclick="openCarouselModal('carousel1')">
-          <!-- Main Slide Preview -->
-          <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] group-hover:scale-[1.02]">
-            <img src="cp1-1.png" alt="Sleep wellness carousel cover" class="w-full h-72 object-cover">
-          </div>
-          
-          <!-- Slide Counter Badge -->
-          <div class="absolute top-3 right-3 bg-black/80 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
-            8 slides
-          </div>
-          
-          <!-- Slide Indicators -->
-          <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
-            <div class="w-2 h-2 rounded-full bg-white shadow-lg"></div>
-            <div class="w-2 h-2 rounded-full bg-white/60"></div>
-            <div class="w-2 h-2 rounded-full bg-white/60"></div>
-            <div class="w-2 h-2 rounded-full bg-white/60"></div>
-            <div class="w-2 h-2 rounded-full bg-white/60"></div>
-          </div>
-          
-          <!-- Overlay with View Button -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-2xl flex items-end justify-center pb-6">
-            <div class="bg-white/95 text-gray-800 px-4 py-2.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/20 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-              View Full Carousel
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Carousel Post 2 -->
-      <div class="flex flex-col gap-4">
-        <div class="text-center mb-2">
-          <h3 class="text-sm font-bold text-[#111827] mb-1">Breathing & Diagnostics</h3>
-          <p class="text-xs text-gray-500">6-slide educational carousel</p>
-        </div>
-        
-        <div class="relative group cursor-pointer" onclick="openCarouselModal('carousel2')">
-          <!-- Main Slide Preview -->
-          <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] group-hover:scale-[1.02]">
-            <img src="cp2-1.png" alt="Breathing diagnostics carousel cover" class="w-full h-72 object-cover">
-          </div>
-          
-          <!-- Slide Counter Badge -->
-          <div class="absolute top-3 right-3 bg-black/80 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
-            6 slides
-          </div>
-          
-          <!-- Slide Indicators -->
-          <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
-            <div class="w-2 h-2 rounded-full bg-white shadow-lg"></div>
-            <div class="w-2 h-2 rounded-full bg-white/60"></div>
-            <div class="w-2 h-2 rounded-full bg-white/60"></div>
-            <div class="w-2 h-2 rounded-full bg-white/60"></div>
-          </div>
-          
-          <!-- Overlay with View Button -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-2xl flex items-end justify-center pb-6">
-            <div class="bg-white/95 text-gray-800 px-4 py-2.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/20 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-              View Full Carousel
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Section 4: BattleLax -->
+    <section id="section-battle" class="reveal reveal-right">
+    <div class="flex flex-col gap-2 mb-10 pb-4 border-b border-gray-100 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">BattleLax</h2>
     </div>
-    
-    <!-- Project Description -->
-    <div class="mt-8 pt-6 border-t border-gray-100">
-      <p class="text-sm text-[#4b5563] leading-relaxed">
-        This was another one-time project for carousel posts for Dr. Karen Parker. Her focus is nasal function diagnostics, AI support, and better breathing and sleep. We studied her profile, researched trending topics in her niche, and designed 6 carousel posts using her branding colors.
-      </p>
+
+    <div class="flex flex-col lg:hidden gap-8">
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="bvideo1.mp4" type="video/mp4"></video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">1.2M</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+3.5k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">45k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
+                </div>
+            </div>
+            <div class="text-center"><a href="#" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="bvideo2.mp4" type="video/mp4"></video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">850k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+1.2k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">22k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
+                </div>
+            </div>
+            <div class="text-center"><a href="#" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
+
+        <article class="glow-card p-6 bg-blue-50/50 border border-blue-100">
+            <h3 class="text-lg font-bold text-[#1e3a8a] mb-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#1e3a8a]"></span> Strategy</h3>
+            <p class="text-sm text-[#4b5563] leading-relaxed">This is also our lacrosse project, but this time it's a lacrosse equipment brand. Our goal was to grow a real lacrosse audience for BattleLax and drive traffic to their website.</p>
+        </article>
     </div>
-  </article>
+
+    <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
+        <article class="glow-card p-6 flex flex-col gap-4">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="1.2M" data-followers="3.5k" data-likes="45k">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="bvideo1.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="#" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram</a></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="850k" data-followers="1.2k" data-likes="22k">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="bvideo2.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="#" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram</a></div>
+                </div>
+            </div>
+        </article>
+
+        <div class="flex flex-col gap-4">
+            <article class="glow-card p-8 metrics-placeholder h-[340px] flex flex-col justify-between relative">
+                
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mt-2">Growth Metrics</h4>
+
+                <div class="metrics-data w-full">
+                    <dl class="space-y-5 w-full default-view transition-opacity duration-300">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Views</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Followers</dt>
+                            <dd class="text-2xl font-extrabold text-orange-100">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <dt class="text-sm font-medium text-gray-500">Likes</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                    </dl>
+                </div>
+
+               
+            </article>
+            <article class="glow-card p-6 bg-blue-50/50 border-blue-100">
+                <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
+                <p class="text-xs text-[#4b5563] leading-relaxed">This is also our lacrosse project, but this time it's a lacrosse equipment brand. Our goal was to grow a real lacrosse audience for BattleLax and drive traffic to their website. We posted viral highlights and created custom ads.</p>
+            </article>
+        </div>
+    </div>
 </section>
 
+    <!-- Section 5: Isid.insulation.drywall -->
+    <section id="section-isid" class="reveal reveal-left">
+    <div class="flex flex-col gap-2 mb-10 pb-4 border-b border-gray-100 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Case Study</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">Isid.insulation.drywall</h2>
+    </div>
+
+    <div class="flex flex-col lg:hidden gap-8">
+        
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="ivideo1.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">346k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+203</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">1,942</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
+                </div>
+            </div>
+            <div class="text-center"><a href="https://www.instagram.com/reel/DFV5xEHCYCE/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto mb-6">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="ivideo2.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-5">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">Performance Metrics</h4>
+                <div class="grid grid-cols-3 gap-2 text-center divide-x divide-gray-200">
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">262k</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Views</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-orange-600 count-up">+147</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Followers</div></div>
+                    <div class="px-1"><div class="text-xl font-extrabold text-gray-900 count-up">1,155</div><div class="text-[10px] font-bold text-gray-500 uppercase mt-1">Likes</div></div>
+                </div>
+            </div>
+            <div class="text-center"><a href="https://www.instagram.com/reel/DHBwgmct3KJ/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="ivideo3.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="glow-card p-6 bg-blue-50/50 border border-blue-100">
+            <h3 class="text-lg font-bold text-[#1e3a8a] mb-3 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1e3a8a]"></span> Strategy
+            </h3>
+            <p class="text-sm text-[#4b5563] leading-relaxed">
+                This is our local construction project based in Denver, Colorado. The brand offers drywall, insulation, and painting services, and our goal was to build local awareness. The client recorded some on-site videos, but we mostly created custom AI-voice educational content to target the right local audience.
+            </p>
+        </article>
+    </div>
+
+    <div class="hidden lg:grid lg:grid-cols-[1.6fr,1fr] opt-grid-gap">
+        <article class="glow-card p-6 flex flex-col gap-4">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="346k" data-followers="203" data-likes="1,942">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="ivideo1.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="https://www.instagram.com/reel/DFV5xEHCYCE/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram</a></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]" data-type="video" data-views="262k" data-followers="147" data-likes="1,155">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="ivideo2.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                    <div class="text-center"><a href="https://www.instagram.com/reel/DHBwgmct3KJ/" target="_blank" class="inline-flex items-center gap-2 font-bold text-sm transition-colors">View on Instagram</a></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+                            <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)"><source src="ivideo3.mp4" type="video/mp4"></video>
+                            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)"><div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <div class="flex flex-col gap-4">
+            
+            <article class="glow-card p-8 metrics-placeholder h-[340px] flex flex-col justify-between relative">
+                
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mt-2">Growth Metrics</h4>
+
+                <div class="metrics-data w-full">
+                    <dl class="space-y-5 w-full default-view transition-opacity duration-300">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Views</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                            <dt class="text-sm font-medium text-gray-500">Followers</dt>
+                            <dd class="text-2xl font-extrabold text-orange-100">---</dd>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <dt class="text-sm font-medium text-gray-500">Likes</dt>
+                            <dd class="text-2xl font-extrabold text-gray-200">---</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                
+            </article>
+
+            <article class="glow-card p-6 bg-blue-50/50 border-blue-100">
+                <h3 class="text-sm font-bold text-[#1e3a8a] mb-3">Strategy</h3>
+                <p class="text-xs text-[#4b5563] leading-relaxed">
+                    This is our local construction project based in Denver, Colorado. The brand offers drywall, insulation, and painting services, and our goal was to build local awareness. We focused on custom AI-voice educational content.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+    <!-- Section 6: One-Time Graphic Project #1 -->
+  <section id="section-graphics-1" class="reveal reveal-zoom" aria-label="One-time graphic project 1">
+    
+    <div class="flex flex-col gap-2 mb-6 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Graphics Gallery</p>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">One-Time Graphic Project #1</h2>
+    </div>
+
+    <article class="glow-card p-6 md:p-8">
+        <div class="mb-8 border-b border-gray-100 pb-6">
+            <p class="text-sm text-[#4b5563] leading-relaxed text-center lg:text-left">
+                This was a one-time project where we made 30 graphic posts for a personal brand. We first chose the branding colors and font. Then we researched trending posts in the niche and recreated them in the client's style.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            
+            <div class="rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group" style="aspect-ratio: 4/5;">
+                <img src="g1.png" alt="Graphic design 1" class="w-full h-full object-cover img-zoom">
+            </div>
+            
+            <div class="rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group" style="aspect-ratio: 4/5;">
+                <img src="g2.png" alt="Graphic design 2" class="w-full h-full object-cover img-zoom">
+            </div>
+            
+            <div class="rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 col-span-2 sm:col-span-1 group" style="aspect-ratio: 4/5;">
+                <img src="g3.png" alt="Graphic design 3" class="w-full h-full object-cover img-zoom">
+            </div>
+            
+        </div>
+    </article>
+</section>
+
+    <!-- Section 7: One-Time Graphic Project #2 -->
+    <section id="section-graphics-2" class="reveal reveal-left" aria-label="Carousel graphics project">
+    
+    <div class="flex flex-col gap-2 mb-6 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Carousel Graphics</p>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">One-Time Graphic Project #2</h2>
+    </div>
+
+    <article class="glow-card p-6 md:p-8" aria-label="Carousel graphics gallery">
+        
+        <div class="mb-8 border-b border-gray-100 pb-6">
+            <p class="text-sm text-[#4b5563] leading-relaxed text-center lg:text-left">
+                This was another one-time project for carousel posts for Dr. Karen Parker. Her focus is nasal function diagnostics, AI support, and better breathing and sleep. We studied her profile, researched trending topics in her niche, and designed 6 carousel posts using her branding colors.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            
+            <div class="flex flex-col gap-4 group cursor-pointer" onclick="openCarouselModal('carousel1')">
+                <div class="relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 bg-gray-50">
+                    <img src="cp1-1.png" alt="Sleep & Wellness Carousel Cover" class="w-full h-full object-cover aspect-[4/3]">
+                    <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/10">8 Slides</div>
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="bg-white text-gray-900 px-5 py-2 rounded-full font-bold text-xs shadow-lg transform scale-95 group-hover:scale-100 transition-transform">View Slides</span>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-bold text-[#111827]">Sleep & Wellness Series</h3>
+                    <p class="text-xs text-gray-500 mt-1 font-medium">Educational Carousel Strategy</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4 group cursor-pointer" onclick="openCarouselModal('carousel2')">
+                <div class="relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 bg-gray-50">
+                    <img src="cp2-1.png" alt="Breathing Diagnostics Carousel Cover" class="w-full h-full object-cover aspect-[4/3]">
+                    <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/10">6 Slides</div>
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="bg-white text-gray-900 px-5 py-2 rounded-full font-bold text-xs shadow-lg transform scale-95 group-hover:scale-100 transition-transform">View Slides</span>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-bold text-[#111827]">Breathing & Diagnostics</h3>
+                    <p class="text-xs text-gray-500 mt-1 font-medium">Educational Carousel Strategy</p>
+                </div>
+            </div>
+
+        </div>
+    </article>
+</section>
 <!-- Enhanced Carousel Modal -->
 <div id="carouselModal" class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
   <div class="relative bg-white rounded-3xl shadow-2xl max-w-6xl w-full mx-auto overflow-hidden max-h-[90vh] flex flex-col">
@@ -1200,7 +759,6 @@
     </div>
   </div>
 </div>
-
 <script>
 function openCarouselModal(carouselId) {
   const modal = document.getElementById('carouselModal');
@@ -1276,231 +834,265 @@ document.addEventListener('keydown', function(e) {
   }
 });
 </script>
-   <!-- ScaleWithConnor Case Study -->
-<section id="section-scale" class="reveal reveal-right">
-  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Ad Creative</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ScaleWithConnor</h2>
-  </div>
-  
-  <!-- Mobile Layout -->
-  <div class="flex flex-col lg:hidden gap-6">
-    <!-- Video 1 -->
-    <article class="opt-card-light p-4">
-      <div class="opt-video-frame p-2">
-        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-            <source src="svideo1.mp4" type="video/mp4">
-          </video>
-          
-          <!-- Play Button Overlay -->
-          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+
+    <!-- Section 8: ScaleWithConnor -->
+    <section id="section-scale" class="reveal reveal-right">
     
-    <!-- Video 2 -->
-    <article class="opt-card-light p-4">
-      <div class="opt-video-frame p-2">
-        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-            <source src="svideo2.mp4" type="video/mp4">
-          </video>
-          
-          <!-- Play Button Overlay -->
-          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <!-- Video 3 -->
-    <article class="opt-card-light p-4">
-      <div class="opt-video-frame p-2">
-        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-            <source src="svideo3.mp4" type="video/mp4">
-          </video>
-          
-          <!-- Play Button Overlay -->
-          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
-  
-  <!-- Desktop Layout -->
-  <div class="hidden lg:block">
-    <article class="opt-card-light p-6">
-      <div class="grid grid-cols-3 gap-6">
-        <!-- Desktop Video 1 -->
-        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="svideo1.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="flex flex-col gap-2 mb-6 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Ad Creative</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">ScaleWithConnor</h2>
+    </div>
+
+    <div class="mb-10 border-b border-gray-100 pb-8">
+        <p class="text-sm text-[#4b5563] leading-relaxed text-center lg:text-left max-w-4xl">
+            For this brand, our goal was to create powerful scripts around what the client does best, contractor sales systems and e-commerce growth. We handled their social media, wrote all the scripts, and edited their ad videos to match their message. By creating strong ads and engaging social content, we helped them attract attention and close new clients.
+        </p>
+    </div>
+
+    <div class="flex flex-col lg:hidden gap-8">
         
-        <!-- Desktop Video 2 -->
-        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="svideo2.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="svideo1.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        
-        <!-- Desktop Video 3 -->
-        <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
-          <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-            <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-              <source src="svideo3.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Play Button Overlay -->
-            <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-              <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="svideo2.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="w-full max-w-[240px] mx-auto">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="svideo3.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="hidden lg:block">
+        <article class="glow-card p-6">
+            <div class="grid grid-cols-3 gap-6">
+                
+                <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                    <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="svideo1.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                    <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="svideo2.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opt-video-frame p-2.5 hover:border-blue-400 transition-colors">
+                    <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="svideo3.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </div>
 </section>
 
- <!-- ValueTechStrategies -->
-<section id="section-vts" class="reveal reveal-up">
-  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Website Main Video</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ValueTechStrategies (VTS)</h2>
-  </div>
-  
-  <!-- Single YouTube video -->
-  <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
-    <div class="opt-video-frame p-3 w-full">
-      <div class="video-container w-full bg-gray-900 rounded-2xl overflow-hidden relative aspect-video">
-        <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-          <source src="vtsvideo1.mp4" type="video/mp4">
-        </video>
-        
-        <!-- Play Button Overlay -->
-        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-          <div class="play-button w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-        </div>
-      </div>
+    <!-- Section 9: ValueTechStrategies -->
+    <section id="section-vts" class="reveal reveal-up">
+    
+    <div class="flex flex-col gap-2 mb-10 pb-4 border-b border-gray-100 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Website Main Video</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">ValueTechStrategies (VTS)</h2>
     </div>
-  </article>
-</section>
-<!-- ChamberlandCedar Case Study -->
-<section id="section-chamber" class="reveal reveal-up">
-  <div class="flex flex-col gap-3 mb-4 border-b border-gray-200 pb-4">
-    <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Work</p>
-    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#111827]">ChamberlandCedar</h2>
-  </div>
-  
-  <div class="flex flex-col lg:grid lg:grid-cols-2 opt-grid-gap">
-    <!-- Video Section -->
-    <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
-      <div class="flex items-center gap-3 mb-2">
-        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-          <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-sm font-bold text-[#111827]">Product Showcase Video</h3>
-          <p class="text-xs text-gray-500">Cedar craftsmanship highlight</p>
-        </div>
-      </div>
-      
-      <div class="opt-video-frame p-2">
-        <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16]">
-          <video class="w-full h-full" preload="metadata" onclick="togglePlayPause(this)">
-            <source src="ccvideo1.mp4" type="video/mp4">
-          </video>
-          
-          <!-- Play Button Overlay -->
-          <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
-            <div class="play-button w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all">
-              <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <!-- Graphic Section -->
-    <article class="opt-card-light p-5 md:p-6 flex flex-col gap-4">
-      <div class="flex items-center gap-3 mb-2">
-        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-          <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-sm font-bold text-[#111827]">Brand Graphic</h3>
-          <p class="text-xs text-gray-500">Social media visual</p>
-        </div>
-      </div>
-      
-      <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
-        <img src="ccpic.png" alt="Chamberland Cedar brand graphic" class="w-full h-auto object-contain">
-      </div>
-    
-    </article>
-  </div>
-</section>
-  </main>
-  <!-- Footer -->
- <footer class="py-12 px-6 bg-white border-t border-gray-100 mt-12">
-    <div class="max-w-4xl mx-auto text-center reveal active">
+
+    <article class="glow-card p-6 md:p-8">
         
+        <div class="mb-8 border-b border-gray-100 pb-6">
+            <p class="text-sm text-[#4b5563] leading-relaxed text-center lg:text-left max-w-4xl">
+                For VTS, our job was to create clean, professional videos he could use on his website. We wrote the scripts, the client recorded the clips, and then we edited everything in his brand colors. In total, we made one main overview video and four case-study videos to help explain what VTS does in a simple, engaging way.
+            </p>
+        </div>
+
+        <div class="opt-video-frame p-2 md:p-3 bg-gray-50 border border-gray-100 rounded-2xl md:rounded-3xl shadow-inner">
+            <div class="video-container w-full bg-black rounded-xl md:rounded-2xl overflow-hidden relative aspect-video shadow-md group">
+                
+                <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                    <source src="vtsvideo1.mp4" type="video/mp4">
+                </video>
+                
+                <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer transition-colors hover:bg-black/20" onclick="playVideo(this)">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl transform transition-all duration-300 group-hover:scale-110">
+                        <svg class="w-6 h-6 md:w-8 md:h-8 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </article>
+</section>
+
+    <!-- Section 10: ChamberlandCedar -->
+    <section id="section-chamber" class="reveal reveal-up">
+    
+    <div class="flex flex-col gap-2 mb-6 text-center lg:text-left">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#f97316] font-bold">Client Work</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#111827]">ChamberlandCedar</h2>
+    </div>
+
+    <div class="mb-10 border-b border-gray-100 pb-8">
+        <p class="text-sm text-[#4b5563] leading-relaxed text-center lg:text-left max-w-4xl">
+            For Chamberland Cedar, our goal was to create clean and clear ads that match their premium building products. We wrote the script for their main ad video and also designed a graphic ad. Their products include Western Red Cedar, Alaskan Yellow Cedar, wood decking, PVC decking, PVC railing, and more, so our ads were focused on showing quality and trust.
+        </p>
+    </div>
+
+    <div class="flex flex-col lg:hidden gap-8">
+        
+        <article class="glow-card p-6">
+            <div class="mb-4 text-center">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-800 text-[10px] font-bold uppercase tracking-wide">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ad Video
+                </span>
+            </div>
+            
+            <div class="w-full max-w-[240px] mx-auto">
+                <div class="opt-video-frame p-2">
+                    <div class="video-container w-full bg-gray-900 rounded-[18px] overflow-hidden relative aspect-[9/16]">
+                        <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                            <source src="ccvideo1.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onclick="playVideo(this)">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="glow-card p-6">
+            <div class="mb-4 text-center">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-green-800 text-[10px] font-bold uppercase tracking-wide">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Ad Graphic
+                </span>
+            </div>
+
+            <div class="rounded-xl bg-gray-50 border border-gray-100 overflow-hidden shadow-sm">
+                <img src="ccpic.png" alt="Chamberland Cedar Ad Graphic" class="w-full h-auto object-contain">
+            </div>
+        </article>
+
+    </div>
+
+    <div class="hidden lg:grid lg:grid-cols-2 gap-8">
+        
+        <article class="glow-card p-6 md:p-8 flex flex-col gap-4">
+            <div class="flex items-center gap-3 mb-2 border-b border-gray-50 pb-4">
+                <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-[#111827]">Ad Video</h3>
+                    <p class="text-xs text-gray-500">Premium product showcase</p>
+                </div>
+            </div>
+            
+            <div class="opt-video-frame p-2 bg-gray-50 rounded-[24px] border border-gray-100">
+                <div class="video-container w-full bg-gray-900 rounded-[20px] overflow-hidden relative aspect-[9/16] shadow-inner">
+                    <video class="w-full h-full object-cover" preload="metadata" onclick="togglePlayPause(this)">
+                        <source src="ccvideo1.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer group" onclick="playVideo(this)">
+                        <div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="glow-card p-6 md:p-8 flex flex-col gap-4">
+            <div class="flex items-center gap-3 mb-2 border-b border-gray-50 pb-4">
+                <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-[#111827]">Ad Graphic</h3>
+                    <p class="text-xs text-gray-500">Social media visual</p>
+                </div>
+            </div>
+            
+            <div class="rounded-2xl bg-white border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <img src="ccpic.png" alt="Chamberland Cedar Ad Graphic" class="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-700">
+            </div>
+        </article>
+        
+    </div>
+</section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 bg-white border-t border-gray-100 mt-12">
+    <div class="max-w-4xl mx-auto text-center reveal active">
         <div class="mb-4">
             <img src="newlogo.png" alt="OptifyUp Logo" class="h-12 w-auto mx-auto">
         </div>
@@ -1518,15 +1110,12 @@ document.addEventListener('keydown', function(e) {
             <a href="https://www.instagram.com/optifyup/" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
                 <img src="instalogo.png" alt="Instagram" class="h-9 w-9">
             </a>
-
             <a href="https://www.facebook.com/" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
                 <img src="facebooklogo.png" alt="Facebook" class="h-9 w-9">
             </a>
-
             <a href="https://www.linkedin.com" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
                 <img src="linkdinlogo.png" alt="LinkedIn" class="h-9 w-9">
             </a>
-
             <a href="https://www.upwork.com" target="_blank" class="transition-all hover:scale-110 transform opacity-80 hover:opacity-100">
                 <img src="upworklogo.png" alt="Upwork" class="h-9 w-9">
             </a>
@@ -1536,269 +1125,15 @@ document.addEventListener('keydown', function(e) {
             Copyright 2025 OptifyUp. All rights reserved.
         </div>
     </div>
-</footer>
-<!-- Sleek Media Modal -->
-<div id="mediaModal" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-all duration-300">
-  <div class="relative bg-gray-900 rounded-2xl shadow-2xl max-w-2xl w-full mx-auto overflow-hidden border border-gray-700/50">
-    <!-- Header with title and close button -->
-    <!-- Header with title and close button -->
-<div class="flex items-center justify-between p-4 border-b border-gray-700/50 bg-gray-800/50">
-  <h3 class="text-white font-semibold text-lg" id="modalTitle">Video Preview</h3>
-  <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-colors duration-200 p-1 rounded-lg hover:bg-gray-700/50">
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-    </svg>
-  </button>
-</div>
-    
-    <!-- Media container -->
-    <div class="relative aspect-video bg-black">
-      <video id="modalVideo" class="w-full h-full object-contain hidden" controls></video>
-      <img id="modalImage" class="w-full h-full object-contain hidden" alt="Modal content">
-    </div>
-    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-900 text-white p-3.5 rounded-full shadow-xl opacity-0 invisible transition-all duration-300 hover:bg-orange-600 hover:-translate-y-1 hover:shadow-2xl z-[100] focus:outline-none group">
-    <svg class="w-6 h-6 transform group-hover:-translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
     </svg>
-</button>
+  </button>
 
-<script>
-    
-    // Scroll Animation
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => e.isIntersecting && e.target.classList.add('reveal-visible'));
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    });
-
-    // Smooth in-page navigation
-    document.addEventListener('DOMContentLoaded', () => {
-      const navButtons = document.querySelectorAll("[data-scroll-target]");
-      navButtons.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const target = btn.getAttribute("data-scroll-target");
-          if (!target) return;
-          const el = document.querySelector(target);
-          if (!el) return;
-          e.preventDefault();
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      });
-    });
-
-    // Video functions for in-container playback
-    function playVideo(overlayElement) {
-      const container = overlayElement.closest('.video-container');
-      const video = container.querySelector('video');
-      const overlay = container.querySelector('.video-overlay');
-      
-      video.play();
-      overlay.style.display = 'none';
-    }
-
-    function togglePlayPause(videoElement) {
-      if (videoElement.paused) {
-        videoElement.play();
-        videoElement.parentElement.querySelector('.video-overlay').style.display = 'none';
-      } else {
-        videoElement.pause();
-        videoElement.parentElement.querySelector('.video-overlay').style.display = 'flex';
-      }
-    }
-
-    // Handle video end to show overlay again
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.video-container video').forEach(video => {
-        video.addEventListener('ended', function() {
-          this.parentElement.querySelector('.video-overlay').style.display = 'flex';
-        });
-      });
-    });
-
-    // DYNAMIC HOVER METRICS - FIXED HEADING POSITION
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Setting up dynamic hover metrics...');
-      
-      const containers = document.querySelectorAll('.video-container, .image-container');
-      let currentHoveredContainer = null;
-      
-      containers.forEach(container => {
-        // Hover in - show relevant metrics
-        container.addEventListener('mouseenter', function() {
-          console.log('Hover IN detected');
-          if (currentHoveredContainer) {
-            hideMetrics(currentHoveredContainer);
-          }
-          currentHoveredContainer = this;
-          showMetrics(this);
-        });
-        
-        // Hover out - hide metrics
-        container.addEventListener('mouseleave', function() {
-          console.log('Hover OUT detected');
-          if (currentHoveredContainer === this) {
-            hideMetrics(this);
-            currentHoveredContainer = null;
-          }
-        });
-      });
-
-      function showMetrics(container) {
-        const type = container.getAttribute('data-type');
-        const section = container.closest('section');
-        if (!section) return;
-
-        // Get all metrics placeholders in this section
-        const placeholders = section.querySelectorAll('.metrics-placeholder');
-        
-        placeholders.forEach(placeholder => {
-          const metricsContent = placeholder.querySelector('.metrics-content');
-          const defaultContent = placeholder.querySelector('.default-content');
-          
-          if (defaultContent) defaultContent.classList.add('hidden');
-          if (metricsContent) metricsContent.classList.remove('hidden');
-          
-          // Clear previous content
-          metricsContent.innerHTML = '';
-          
-          // Add relevant metrics based on type
-          if (type === 'video') {
-            addVideoMetrics(metricsContent, container);
-          } else if (type === 'story') {
-            addStoryMetrics(metricsContent, container);
-          }
-        });
-      }
-
-      function hideMetrics(container) {
-        const section = container.closest('section');
-        if (!section) return;
-
-        const placeholders = section.querySelectorAll('.metrics-placeholder');
-        
-        placeholders.forEach(placeholder => {
-          const metricsContent = placeholder.querySelector('.metrics-content');
-          const defaultContent = placeholder.querySelector('.default-content');
-          
-          if (defaultContent) defaultContent.classList.remove('hidden');
-          if (metricsContent) {
-            metricsContent.classList.add('hidden');
-            metricsContent.innerHTML = '';
-          }
-        });
-      }
-
-     function addVideoMetrics(container, videoContainer) {
-  const views = videoContainer.getAttribute('data-views');
-  const followers = videoContainer.getAttribute('data-followers');
-  const likes = videoContainer.getAttribute('data-likes');
   
-  const isDesktop = container.closest('.opt-card')?.classList.contains('p-5');
-  
-  if (isDesktop) {
-    // Desktop layout - WITHOUT extra wrapper div
-    container.innerHTML = `
-      <dl class="text-xs text-[#4b5563] space-y-3">
-        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
-          <div>
-            <dt class="font-medium text-gray-700">Views</dt>
-            <dd class="font-bold text-[#111827] text-lg">${views}</dd>
-          </div>
-        </div>
-        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
-          <div>
-            <dt class="font-medium text-gray-700">Followers</dt>
-            <dd class="font-bold text-[#111827] text-lg">+${followers}</dd>
-          </div>
-        </div>
-        <div class="flex justify-between items-center">
-          <div>
-            <dt class="font-medium text-gray-700">Likes</dt>
-            <dd class="font-bold text-[#111827] text-lg">${likes}</dd>
-          </div>
-        </div>
-      </dl>
-    `;
-  } else {
-    // Mobile layout - WITHOUT extra wrapper div
-    container.innerHTML = `
-      <dl class="text-[11px] text-[#4b5563] space-y-1.5">
-        <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">${views}</dd></div>
-        <div class="flex justify-between"><dt>Followers</dt><dd class="font-bold text-[#111827]">+${followers}</dd></div>
-        <div class="flex justify-between"><dt>Likes</dt><dd class="font-bold text-[#111827]">${likes}</dd></div>
-      </dl>
-    `;
-  }
-}
-
-function addStoryMetrics(container, storyContainer) {
-  const views = storyContainer.getAttribute('data-views');
-  const clicks = storyContainer.getAttribute('data-clicks');
-  const channel = storyContainer.getAttribute('data-channel');
-  
-  const isDesktop = container.closest('.opt-card')?.classList.contains('p-5');
-  
-  if (isDesktop) {
-    // Desktop layout - WITHOUT extra wrapper div
-    container.innerHTML = `
-      <dl class="text-xs text-[#4b5563] space-y-3">
-        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
-          <div>
-            <dt class="font-medium text-gray-700">Views</dt>
-            <dd class="font-bold text-[#111827] text-lg">${views}</dd>
-          </div>
-        </div>
-        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
-          <div>
-            <dt class="font-medium text-gray-700">Clicks</dt>
-            <dd class="font-bold text-[#111827] text-lg">${clicks}</dd>
-          </div>
-        </div>
-        <div class="flex justify-between items-center">
-          <div>
-            <dt class="font-medium text-gray-700">Channel</dt>
-            <dd class="font-bold text-[#111827] text-lg">${channel}</dd>
-          </div>
-        </div>
-      </dl>
-    `;
-  } else {
-    // Mobile layout - WITHOUT extra wrapper div
-    container.innerHTML = `
-      <dl class="text-[11px] text-[#4b5563] space-y-1.5">
-        <div class="flex justify-between"><dt>Views</dt><dd class="font-bold text-[#111827]">${views}</dd></div>
-        <div class="flex justify-between"><dt>Clicks</dt><dd class="font-bold text-[#111827]">${clicks}</dd></div>
-        <div class="flex justify-between"><dt>Channel</dt><dd class="font-bold text-[#111827]">${channel}</dd></div>
-      </dl>
-    `;
-  }
-}
-    });
-
-    // Element SDK Configuration
-    (async function () {
-      if (!window.elementSdk) {
-        return;
-      }
-      
-      const defaultConfig = {
-        background_color: "#f8fafc",
-        surface_color: "#ffffff",
-        text_color: "#4b5563",
-        primary_action_color: "#1e3a8a",
-        secondary_action_color: "#f97316",
-        font_family: "SF Pro Text",
-        font_size: 14,
-        page_title: "Portfolio",
-        page_subheadline: "Real Clients. Real Results.",
-        footer_contact_email: "hello@optifyup.com",
-        footer_copyright: "© 2025 OptifyUp. All rights reserved.",
-      };
-
-      // ... rest of your Element SDK code ...
-      
-    })();
-  </script>
-  </body>
+</body>
 </html>
